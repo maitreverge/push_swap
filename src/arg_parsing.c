@@ -6,9 +6,19 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/25 12:30:58 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/26 11:08:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+int	check_arg(int ac, char **av)
+{
+	int i;
+
+	i = 1;
+	while (i <= ac)
+	{
+		
+	}
+}

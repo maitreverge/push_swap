@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/25 12:16:11 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/25 16:51:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <unistd.h> // write, read
 # include <stdlib.h> // malloc, free and exit
 
-
+typedef struct s_node
+{
+	int nb;
+	struct s_node *next;
+}			t_node;
 
 #endif
