@@ -6,8 +6,35 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/25 12:16:00 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/26 14:54:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_is_space(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}
+
+int	ft_is_num(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != NULL)
+	{
+		while (ft_is_space(str[i]) && str[i])
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		while (ft_isdigit(str[i]) && str[i])
+			i++;
+		if (str[i] && !ft_is_space(str[i]))
+			return 1; // returns error if the following char is not a space
+		// i++; // not increment otherwise segfault
+	}
+	return (0);
+}
