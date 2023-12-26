@@ -6,11 +6,13 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/26 14:57:08 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/26 15:59:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+
 
 int	check_arg(int ac, char **av) // ! Making sure that every arg is a number
 {
