@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/27 16:13:37 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:19:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		if (ac == 2)
 			av = ft_split(av[1], ' ');
 	}
-	init_stack(a, av + 1);	
+	init_stack(*a, av + 1);	
 		
 		
 }
