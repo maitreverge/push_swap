@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/26 14:54:03 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:06:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,27 @@ int	ft_is_num(char *str)
 		// i++; // not increment otherwise segfault
 	}
 	return (0);
+}
+
+long	ft_atol(const char *str)
+{
+	int		sign;
+	long	result;
+
+	sign = 1;
+	result = 0;
+	while (ft_is_space(*str))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }
