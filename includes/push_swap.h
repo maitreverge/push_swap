@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/26 14:55:34 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:11:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 # include "../libft/get_next_line/get_next_line_bonus.h"
 # include <unistd.h> // write, read
 # include <stdlib.h> // malloc, free and exit
+# include <limits.h>
 
 typedef struct s_node
 {
 	int				nb;
+	int				index;
+	struct s_node	*prev;
 	struct s_node	*next;
 }			t_node;
 
@@ -32,6 +35,8 @@ int	check_arg(int ac, char **av);
 // utils
 int	ft_is_space(char c);
 int	ft_is_num(char *str);
+long	ft_atol(const char *str);
+
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/26 17:51:43 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:13:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,19 @@ int	main(int ac, char **av)
 	
 	a = NULL;
 	b = NULL;
-	if (ac == 1) // if nothing promped, return
+	if (ac == 1 || (ac == 2 && !ac[1][0])) // if nothing promped, return
 		return (-1);
 	else if (ac >= 2)
 	{
 		if (check_arg(ac, av) == 1) // ! chekcs if it's only numbers
+		{
 			ft_printf("Error\n");
-		
+			return (-1);
+		}
+		if (ac == 2)
+			av = ft_split(av[1], ' ');
 	}
+	init_stack(a, av + 1);	
 		
 		
 }

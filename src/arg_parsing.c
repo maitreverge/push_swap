@@ -6,13 +6,28 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/26 15:59:40 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:14:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	init_stack(t_node *a, char **av)
+{
+	// While running accross the args, need to check_arg
+	long current_number;
 
+	while (*av)
+	{
+		current_number = ft_atol(*av);
+		// ! INT MAX / INT MIN 
+		if (current_number > INT_MAX || current_number < INT_MIN)
+			exit(-1);
+		// ! NUMBER REPETITION
+		
+		av++;
+	}
+}
 
 int	check_arg(int ac, char **av) // ! Making sure that every arg is a number
 {
