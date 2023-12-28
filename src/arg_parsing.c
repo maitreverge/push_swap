@@ -6,16 +6,24 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/28 13:51:37 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:54:42 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	add_node(t_node *a, av)
+void	add_node(t_node **a, int current_number)
 {
 	t_node *node;
-	
+
+	if (!a)
+		return NULL;	
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return NULL;
+	node->nb = current_number;
+
+	// add adresses prev and next
 	
 }
 
