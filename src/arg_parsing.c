@@ -6,11 +6,18 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/28 13:35:35 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:51:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	add_node(t_node *a, av)
+{
+	t_node *node;
+	
+	
+}
 
 int	check_double(t_node *a, int nb)
 {
@@ -39,9 +46,7 @@ void	init_stack(t_node **a, char **av)
 		// ! NUMBER REPETITION
 		if (check_double(*a, (int)current_number))
 			exit(-1);
-		// add_node(a, av);
-		
-		
+		add_node(*a, (int)current_number);
 		av++;
 	}
 }
