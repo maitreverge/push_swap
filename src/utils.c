@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/27 16:06:06 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:38:24 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_is_num(char *str)
 	int i;
 
 	i = 0;
-	while (str[i] != NULL)
+	while (str[i])
 	{
 		while (ft_is_space(str[i]) && str[i])
 			i++;

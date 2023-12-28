@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/27 18:44:46 by flverge          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:35:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	check_double(t_node *a, int nb)
 {
 	if (a == NULL)
-		return 0;
+		return (0);
 	while (a)
 	{
 		if (a->nb == nb)
-			return 1;
+			return (1);
 		a = a->next;
 	}
-	return 0;
+	return (0);
 }
 
 void	init_stack(t_node **a, char **av)
@@ -37,7 +37,7 @@ void	init_stack(t_node **a, char **av)
 		if (current_number > INT_MAX || current_number < INT_MIN)
 			exit(-1);
 		// ! NUMBER REPETITION
-		if (check_double(*a, int(current_number)))
+		if (check_double(*a, (int)current_number))
 			exit(-1);
 		// add_node(a, av);
 		
