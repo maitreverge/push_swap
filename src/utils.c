@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/28 13:38:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/01 13:28:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,15 @@ long	ft_atol(const char *str)
 		str++;
 	}
 	return (result * sign);
+}
+
+t_node	*ft_last_node(t_node *lst)
+{
+	while (lst)
+	{
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
 }

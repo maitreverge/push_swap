@@ -6,34 +6,34 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/28 14:26:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/01 13:28:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	
-
 void	add_node(t_node **a, int current_number)
 {
 	t_node *node;
+	t_node *last_node;
 
 	if (!a)
-		return NULL;	
+		return ;	
 	node = malloc(sizeof(t_node));
 	if (!node)
-		return NULL;
-	// add adresses prev and next
+		return ;
 	node->nb = current_number;
 	node->next = NULL;
-	if (*a == NULL) // FIRST NODE
+	if (*a == NULL) // ! FIRST NODE
 	{
-		a = node;
+		*a = node;
 		node->prev = NULL;
 	}
-	else // NOT FIRST NODE
+	else // ! NOT FIRST NODE
 	{
-				
+		last_node = ft_last_node(*a);
+		last_node->next = node;
+		node->prev = last_node;	
 	}
 }
 
@@ -64,7 +64,7 @@ void	init_stack(t_node **a, char **av)
 		// ! NUMBER REPETITION
 		if (check_double(*a, (int)current_number))
 			exit(-1);
-		add_node(*a, (int)current_number);
+		add_node(a, (int)current_number);
 		av++;
 	}
 }
