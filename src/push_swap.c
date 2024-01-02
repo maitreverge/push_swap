@@ -6,11 +6,23 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/02 10:33:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:00:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	print_stack(t_node **a)
+{
+	t_node *current;
+
+	current = *a;
+	while (current->next != NULL)
+	{
+		printf("Current node = %i\n", current->nb);
+		current++;
+	}
+}
 
 int	main(int ac, char **av)
 {
@@ -32,6 +44,6 @@ int	main(int ac, char **av)
 			av = ft_split(av[1], ' ');
 	}
 	init_stack(&a, av + 1);	
-		
+	print_stack(&a);
 		
 }

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/02 10:45:30 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/02 14:57:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,21 @@ int	check_double(t_node *a, int nb)
 void	init_stack(t_node **a, char **av)
 {
 	long	current_number;
+	int i = 0;
 	// While running accross the args, need to check_arg
 
-	while (*av)
+	while (av[i])
 	{
-		current_number = ft_atol(*av);
+		current_number = ft_atol(av[i]);
 		// ! INT MAX / INT MIN 
 		if (current_number > INT_MAX || current_number < INT_MIN)
 			exit(-1);
 		// ! NUMBER REPETITION
 		if (check_double(*a, (int)current_number))
 			exit(-1);
+		printf("Current number = %li\n", current_number);
 		add_node(a, (int)current_number);
-		av++;
+		++i;
 	}
 }
 
