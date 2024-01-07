@@ -22,4 +22,4 @@ Unfinished project, soon.
 Unfinished project, soon.
 
 ## 🤝 CONTRIBUTION
-Contributions are open ! Make a pull request or open an issue, I'd be happy to contribute !
+Contributions are open !
