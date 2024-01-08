@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/06 12:12:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:11:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	ft_is_space(char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == ' ')
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
 		return (1);
 	return (0);
 }
 
 int	ft_is_num(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -33,8 +34,7 @@ int	ft_is_num(char *str)
 		while (ft_isdigit(str[i]) && str[i])
 			i++;
 		if (str[i] && !ft_is_space(str[i]))
-			return 1; // returns error if the following char is not a space
-		// i++; // not increment otherwise segfault
+			return (1);
 	}
 	return (0);
 }
