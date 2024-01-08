@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/08 13:09:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:34:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ typedef struct s_node
 }			t_node;
 
 // arg_parsing
-int		check_double(t_node *a, int nb);
 int		check_arg(int ac, char **av);
 
 // init_stack
-void    init_stack(int ac, char **av, t_node **a);
+void	quit(long *to_free, int exit_code);
+int		check_double(long *to_check, int j);
+void	init_stack(int ac, char **av, t_node **a);
 
 
 // utils
