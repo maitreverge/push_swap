@@ -1,0 +1,3 @@
+The parsings needs to be `long`
+
+for checking INT_MAX and INT_MIN
