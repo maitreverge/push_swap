@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/08 15:34:10 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 10:50:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,11 @@ void	init_stack(int ac, char **av, t_node **a);
 int		ft_is_space(char c);
 int		ft_is_num(char *str);
 long	ft_atol(const char *str);
+
+// linked_list_functions
+
+t_node	*lstnew(int content);
+void	lstadd_back(t_node **lst, t_node *new);
+t_node	*lstlast(t_node *lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 10:28:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 10:51:45 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		check_double(long *to_check, int j)
 	{
 		if (to_check[i] == to_check[k])
 		{
-			printf("Double detected\n");	
+			// printf("Double detected\n");	
 			return (1);
 		}
 		k++;
@@ -43,11 +43,27 @@ int		check_double(long *to_check, int j)
 	return (0);
 }
 
+void	fill_stack_a(long *buffer, t_node **a, int size)
+{
+	int	i;
+
+	i = 0;
+
+	while (i < size)
+	{
+		if (*a ==  NULL)
+			lstnew((int)buffer[i]);
+		else
+			lstadd_back(a, lstnew((int)buffer[i]));
+		i++;
+	}
+}
+
 void    init_stack(int ac, char **av, t_node **a)
 {
 	long	cur_nb;
 	long	*pre_buff;
-	char **av_copy;
+	char	**av_copy;
 	int		i;
 	int 	j;
 	
@@ -67,7 +83,7 @@ void    init_stack(int ac, char **av, t_node **a)
 	while (*av_copy != NULL)
 	{
 		cur_nb = ft_atol(*av_copy);
-		printf("Current nb = %li\n", cur_nb);
+		// printf("Current nb = %li\n", cur_nb);
 		if ((cur_nb < INT_MIN || cur_nb > INT_MAX))
 			quit(pre_buff, -1);
 		pre_buff[j] = cur_nb;
@@ -76,6 +92,12 @@ void    init_stack(int ac, char **av, t_node **a)
 		j++;
 		av_copy++;
 	}
-	 
+	// ! here, the buffer is filled AND checked
+	// ! needs to fill the linked_list
 	
+	fill_stack_a(pre_buff, a, i);
+	
+	// if (ac == 2)
+	free(av_copy);
+	free(pre_buff);
 }
