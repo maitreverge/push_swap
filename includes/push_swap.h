@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 11:29:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 14:07:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ long	*init_pre_buff(char **av_copy);
 void	fill_pre_buff(char **av_copy, long *pre_buff);
 void	init_stack(int ac, char **av, t_node **a);
 
+//master_algo
+void	master_algo(t_node **a, t_node **b);
 
 
 // utils
@@ -51,6 +53,8 @@ t_node	*lstnew(int content);
 void	lstadd_back(t_node **lst, t_node *new);
 t_node	*lstlast(t_node *lst);
 void	free_stack(t_node *a);
+int		lstsize(t_node *lst);
+
 
 
 #endif

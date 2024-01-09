@@ -1,47 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   master_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 14:06:58 by flverge          ###   ########.fr       */
+/*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
+/*   Updated: 2024/01/09 14:07:13 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_stack(t_node *a)
+void    master_algo(t_node **a, t_node **b)
 {
-	t_node *current;
+    int len_stack;
 
-	current = a;
-
-	while (current->next != NULL)
-	{
-		printf("Node = %i\n", current->nb);
-		current = current->next;
-	}
+    len_stack = lstsize(*a);
+    printf("Len stack = %i\n", len_stack);
 }
-
-int	main(int ac, char **av)
-{
-	t_node *a;
-	t_node *b;
-
-	a = NULL;
-	b = NULL;
-	// basic check for forbidden chars
-	if (!check_arg(ac, av))
-	{
-		init_stack(ac, av, &a);
-		master_algo(&a, &b);
-		print_stack(a);
-		free_stack(a);
-		free_stack(b);
-	}
-	else
-		printf("Error\n");
-}
-
