@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2023/12/25 12:22:55 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 16:28:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	swap_a(t_node **a)
+{
+	// ? TO_DO : implement a return t_node OR a return void
+	t_node *temp;
+
+	if (lstsize(*a) < 2)
+		return ;
+	temp = *a;
+	
+	
+	ft_printf("sa\n");
+	return (temp);
+}
 
 /*
 
