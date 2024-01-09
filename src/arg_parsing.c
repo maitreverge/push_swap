@@ -6,21 +6,26 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/08 15:34:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 11:36:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h" 
 
-int	check_arg(int ac, char **av) // ! Making sure that every arg is a number
+/**
+ * @brief Make sure that every arg is a number
+ * 
+ * @param ac 
+ * @param av 
+ * @return int 
+ */
+int	check_arg(int ac, char **av)
 {
 	int	i;
 
 	i = 1;
-	// ! needs checking for return values in error case
 	if (ac == 1)
 		return (i);
-
 	while (i < ac)
 	{
 		if (ft_is_num(av[i]))
@@ -29,4 +34,3 @@ int	check_arg(int ac, char **av) // ! Making sure that every arg is a number
 	}
 	return (0);
 }
-

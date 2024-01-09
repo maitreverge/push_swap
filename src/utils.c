@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 10:46:17 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 11:37:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,11 @@ long	ft_atol(const char *str)
 		str++;
 	}
 	return (result * sign);
+}
+
+void	quit(long *to_free, int exit_code)
+{
+	free(to_free);
+	ft_printf("Error\n");
+	exit(exit_code);
 }

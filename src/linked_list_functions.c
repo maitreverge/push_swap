@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 11:03:23 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 11:35:45 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ t_node	*lstlast(t_node *lst)
 	return (lst);
 }
 
-void free_stack(t_node *a)
+void	free_stack(t_node *a)
 {
-	t_node *current = a;
-	t_node *next;
+	t_node	*current;
+	t_node	*next;
 
+	current = a;
 	while (current != NULL)
 	{
 		next = current->next;

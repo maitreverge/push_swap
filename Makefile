@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/25 11:56:36 by flverge           #+#    #+#              #
-#    Updated: 2024/01/08 13:08:51 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/09 11:30:24 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,12 +68,12 @@ $(NAME): $(OBJ)
 clean:
 	@make clean -sC $(LIBFT_PATH)
 	@rm -f $(OBJ)
-	@echo "$(BOLD)$(ORANGE)🌀     Cleaned .o pipex's files   🌀$(RESET)"
+	@echo "$(BOLD)$(ORANGE)🌀     Cleaned .o push_swap's files   🌀$(RESET)"
 
 fclean: clean
 	@make fclean -sC $(LIBFT_PATH)
 	@rm -f $(NAME)
-	@echo "$(BOLD)$(ORANGE)🌀     Cleaned pipex exec       🌀$(RESET)"
+	@echo "$(BOLD)$(ORANGE)🌀     Cleaned push_swap exec       🌀$(RESET)"
 
 bonus: all
 
