@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 10:50:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 10:59:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ long	ft_atol(const char *str);
 t_node	*lstnew(int content);
 void	lstadd_back(t_node **lst, t_node *new);
 t_node	*lstlast(t_node *lst);
+void	free_stack(t_node *a);
+
 
 #endif
