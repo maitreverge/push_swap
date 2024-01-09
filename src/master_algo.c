@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 14:33:10 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/09 14:41:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ int     already_sorted(t_node **a)
 
     current = *a;
     next = current->next;
-    while (current->next != NULL)
+    while (next->next != NULL)
     {
+        // printf("Current node : %i\n", current->nb);
+        // printf("Next node : %i\n", next->nb);
         if (current->nb > next->nb)
             return (1);
-        current = next;
+        current = current->next;
         next = current->next;
     }
     return (0);
