@@ -1,3 +1,22 @@
 The parsings needs to be `long`
 
 for checking INT_MAX and INT_MIN
+
+INTRUCTIONS TO BE DONE :
+
+STACK A :
+✅	sa
+❌	pa 
+❌	ra 
+❌	rra 
+
+STACK B :
+✅	sb (needs testing)
+❌	pb 
+❌	rb 
+❌	rrb
+
+MULTI COMMANDS
+❌	ss
+❌	rr
+❌	rrr

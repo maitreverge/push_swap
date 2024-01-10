@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 17:10:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:53:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void    master_algo(t_node **a, t_node **b)
     if (already_sorted(a))
     {
         // ? Implement a single algorithm or several
-        swap_a(*a);
-        swap_b(*b); // ! need further testing
+        sa(a);
+        // sb(*b); // ! need further testing
+		pb(a, b);
+
     }
     else
     {

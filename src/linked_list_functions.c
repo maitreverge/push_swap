@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 17:00:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:37:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ t_node	*lstnew(int content)
 	new_element->nb = content;
 	new_element->next = NULL;
 	return (new_element);
+}
+
+void	lstadd_front(t_node **lst, t_node *new)
+{
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 
 void	lstadd_back(t_node **lst, t_node *new)

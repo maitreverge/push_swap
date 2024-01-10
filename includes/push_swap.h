@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 17:07:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:53:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,20 @@ void	quit(long *to_free, int exit_code);
 // linked_list_functions
 
 t_node	*lstnew(int content);
+void	lstadd_front(t_node **lst, t_node *new);
 void	lstadd_back(t_node **lst, t_node *new);
 t_node	*lstlast(t_node *lst);
 void	free_stack(t_node *a);
 int		lstsize(t_node *lst);
 
 // instruction_1
-void	swap_a(t_node *a);
-void	swap_b(t_node *b);
+void	sa(t_node **a);
+void	sb(t_node **b);
+void	pb(t_node **a, t_node **b);
 
+// psh_swap
+void	print_simple(t_node *a, char *message);
+void	print_full(t_node *a, char *message);
 
 
 #endif
