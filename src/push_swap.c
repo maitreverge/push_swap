@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 14:50:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:51:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	print_stack(t_node *a, char *message)
 {
-	t_node *current;
+	t_node	*current;
 
 	current = a;
 
 	printf("%s", message);
-	while (current->next != NULL)
+	while (current != NULL)
 	{
 		printf("Node adress = %p\n", current);
 		printf("Node nb = %i\n", current->nb);
