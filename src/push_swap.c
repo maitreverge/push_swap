@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 14:21:49 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:50:51 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	print_stack(t_node *a, char *message)
 	printf("%s", message);
 	while (current->next != NULL)
 	{
-		printf("Node = %i\n", current->nb);
+		printf("Node adress = %p\n", current);
+		printf("Node nb = %i\n", current->nb);
+		printf("Node next = %p\n\n", current->next);
 		current = current->next;
 	}
 }
@@ -39,7 +41,7 @@ int	main(int ac, char **av)
 		init_stack(ac, av, &a);
 		print_stack(a, "Stack A Pre-Algo\n");
 		master_algo(&a, &b);
-		print_stack(a, "Stack A Post-Algo\n");
+		// print_stack(a, "Stack A Post-Algo\n");
 		free_stack(a);
 		if (b != NULL)
 			free_stack(b);

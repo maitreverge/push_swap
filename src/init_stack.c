@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 14:13:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:51:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	fill_stack_a(long *buffer, t_node **a, int size)
 	int	i;
 
 	i = 0;
-	while (i <= size)
+	while (i <= size + 3)
 	{
 		if (*a == NULL)
 			*a = lstnew((int)buffer[i]);
