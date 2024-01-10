@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 14:37:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:07:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	swap_a(t_node *a)
 	int	temp;
 
 	if (lstsize(a) < 2)
+	{
+		printf("stack b too small");
 		return ;
+	}
 	// ! swap function
 	temp = a->nb;
 	a->nb = a->next->nb;
@@ -25,18 +28,21 @@ void	swap_a(t_node *a)
 	ft_printf("sa\n");
 }
 
-// void	swap_b(t_node *b)
-// {
-// 	int	temp;
+void	swap_b(t_node *b)
+{
+	int	temp;
 
-// 	if (lstsize(b) < 2)
-// 		return ;
-// 	// ! swap function
-// 	temp = b->nb;
-// 	b->nb = b->next->nb;
-// 	b->next->nb = temp;
-// 	ft_printf("sb\n");
-// }
+	if (lstsize(b) < 2)
+	{
+		printf("stack b too small");
+		return ;
+	}
+	// ! swap function
+	temp = b->nb;
+	b->nb = b->next->nb;
+	b->next->nb = temp;
+	ft_printf("sb\n");
+}
 
 /*
 
