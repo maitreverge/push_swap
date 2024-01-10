@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 18:08:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 18:34:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	sa(t_node **a)
 		printf("stack a too small");
 		return ;
 	}
-	// ! swap function
 	temp = (*a)->nb;
 	(*a)->nb = (*a)->next->nb;
 	(*a)->next->nb = temp;
@@ -49,7 +48,6 @@ void	sb(t_node **b)
 		printf("stack b too small");
 		return ;
 	}
-	// ! swap function
 	temp = (*b)->nb;
 	(*b)->nb = (*b)->next->nb;
 	(*b)->next->nb = temp;
@@ -66,8 +64,10 @@ void	sb(t_node **b)
  */
 void	pa(t_node **a, t_node **b)
 {
-	t_node *next_b;
+	t_node	*current_b;
+	t_node	*next_b;
 
+	current_b = *b;
 	next_b = (*b)->next;
 	if (!b)
 		return ;
@@ -76,6 +76,7 @@ void	pa(t_node **a, t_node **b)
 	else
 		lstadd_front(a, lstnew((*b)->nb));
 	*b = next_b;
+	free(current_b);
 	ft_printf("pa\n");
 }
 
@@ -89,8 +90,10 @@ void	pa(t_node **a, t_node **b)
  */
 void	pb(t_node **a, t_node **b)
 {
-	t_node *next_a;
+	t_node	*current_a;
+	t_node	*next_a;
 
+	current_a = *a;
 	next_a = (*a)->next;
 	if (!a)
 		return ;
@@ -99,12 +102,18 @@ void	pb(t_node **a, t_node **b)
 	else
 		lstadd_front(b, lstnew((*a)->nb));
 	*a = next_a;
+	free(current_a);
 	ft_printf("pb\n");
 }
 
-/*
-
-! ss :
-sa and sb at the same time.
-
-*/
+/**
+ * @brief sa and sb at the same time.
+ * 
+ * @param a 
+ * @param b 
+ */
+void	ss(t_node **a, t_node **b)
+{
+	sa(a);
+	sb(b);
+}

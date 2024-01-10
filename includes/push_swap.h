@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 17:53:55 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 18:15:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ int		lstsize(t_node *lst);
 // instruction_1
 void	sa(t_node **a);
 void	sb(t_node **b);
+void	pa(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
+void	ss(t_node **a, t_node **b);
+
+
 
 // psh_swap
 void	print_simple(t_node *a, char *message);
