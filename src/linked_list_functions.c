@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 16:54:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:59:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int	lstsize(t_node *lst) // ! to double check
 {
 	int	i;
 
-	i = 0;
-	if (lst->next == NULL)
+	if (lst == NULL)
+		return (0);
+	else if (lst->next == NULL)
 		return (1);
-	else if (!lst)
-		return (i);
+	i = 0;
 	while (lst != NULL)
 	{
 		i++;
