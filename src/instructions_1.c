@@ -6,25 +6,37 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 16:28:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:37:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_a(t_node **a)
+void	swap_a(t_node *a)
 {
-	// ? TO_DO : implement a return t_node OR a return void
-	t_node *temp;
+	int	temp;
 
-	if (lstsize(*a) < 2)
+	if (lstsize(a) < 2)
 		return ;
-	temp = *a;
-	
-	
+	// ! swap function
+	temp = a->nb;
+	a->nb = a->next->nb;
+	a->next->nb = temp;
 	ft_printf("sa\n");
-	return (temp);
 }
+
+// void	swap_b(t_node *b)
+// {
+// 	int	temp;
+
+// 	if (lstsize(b) < 2)
+// 		return ;
+// 	// ! swap function
+// 	temp = b->nb;
+// 	b->nb = b->next->nb;
+// 	b->next->nb = temp;
+// 	ft_printf("sb\n");
+// }
 
 /*
 

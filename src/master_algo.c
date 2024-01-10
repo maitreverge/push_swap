@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 16:28:13 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:35:36 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void    master_algo(t_node **a, t_node **b)
     int len_b;
 
     len_a = lstsize(*a);
+	// ! Segfault because NULL pointer of the first occurence
     len_b = lstsize(*b);
     if (already_sorted(a))
     {

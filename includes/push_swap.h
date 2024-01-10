@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/09 16:10:42 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:29:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	free_stack(t_node *a);
 int		lstsize(t_node *lst);
 
 // instruction_1
-void	swap_a(t_node **a);
+void	swap_a(t_node *a);
 
 
 
