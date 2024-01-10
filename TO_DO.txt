@@ -6,13 +6,13 @@ INTRUCTIONS TO BE DONE :
 
 STACK A :
 ✅	sa
-❌	pa 
+✅	pa 
 ❌	ra 
 ❌	rra 
 
 STACK B :
 ✅	sb (needs testing)
-❌	pb 
+✅	pb 
 ❌	rb 
 ❌	rrb
 
@@ -20,3 +20,5 @@ MULTI COMMANDS
 ❌	ss
 ❌	rr
 ❌	rrr
+
+😎
