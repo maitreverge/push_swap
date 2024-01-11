@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 15:23:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 15:47:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int find_max(t_node **a)
     int result;
 
     current = *a;
-    result = current->nb;
+    result = INT_MIN;
     while (current != NULL)
     {
         // printf("Current nb = %i\n", current->nb);
@@ -46,26 +46,50 @@ int find_max(t_node **a)
     return result / 10;
 }
 
+void    calculate_radix(t_node **a, t_node **b, int i)
+{
+    t_node  *current_a;
+    t_node  *current_b;
+
+    current_a = *a;
+    current_b = *b;
+    
+    while (current_a)
+    {
+        current_a->radix = current_a->nb % i;
+        current_a = current_a->next;
+    }
+    while (current_b)
+    {
+        current_b->radix = current_b->nb % i;
+        current_b = current_b->next;
+    }
+}
+
 void    master_algo(t_node **a, t_node **b)
 {
     t_node *current_a;
     t_node *current_b;
 
  
-    int max_radix = find_max(a);
-    printf("Max = %i", max_radix);
+    // int max_radix = find_max(a);
+    // printf("Max = %i\n", max_radix);
     
     current_a = *a;
     current_b = *b;
 	if (lstsize(*a) < 2)
 		return ;
-    if (not_already_sorted(a))
+    if (not_already_sorted(a)) // turn this maybe into a while outter loop
     {
-        while (max_radix != 0) // outter loop for knowing the max number
+        int i = 10;
+        int j = 0;
+        calculate_radix(a, b, i);
+        while (a)
         {
-
-            // last condition
-            max_radix = max_radix / 10;           
+            if ((*a)->radix == j)
+                pb(a, b, true);
+            else
+                ra(a, true);
         }
     }
     else // already sorted a first time
