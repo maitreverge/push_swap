@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 11:02:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:29:25 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	sb(t_node **b, bool to_print);
 void	pa(t_node **a, t_node **b, bool to_print);
 void	pb(t_node **a, t_node **b, bool to_print);
 void	ss(t_node **a, t_node **b);
+
+// instructions_2
+void	ra(t_node **a, bool to_print);
+void	rb(t_node **b, bool to_print);
+void	rr(t_node **a, t_node **b);
 
 
 

@@ -6,22 +6,35 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 11:22:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:31:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+// ! function needs to be valgrinded
 void	ra(t_node **a, bool to_print)
 {
+	t_node *new_first;
+	t_node *new_last;
+	t_node *old_first;
+
+	new_last = *a;
+	old_first = *a;
+	new_first = (*a)->next;
+	
+	lstadd_back(a, lstnew(old_first->nb));
+	*a = new_first;
+	free(old_first);
 	if (to_print)
-		ft_print("ra\n")
+		ft_printf("ra\n");
 }
 
-void	rb(t_node **a, bool to_print)
+// ! function needs to be valgrinded
+void	rb(t_node **b, bool to_print)
 {
 	if (to_print)
-		ft_print("rb\n")
+		ft_printf("rb\n");
 }
 
 void	rr(t_node **a, t_node **b)

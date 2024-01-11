@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 11:01:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:30:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,12 @@ void    master_algo(t_node **a, t_node **b)
     {
         // ? Implement a single algorithm or several
         // sa(a, true);
-        // sb(*b, true); // ! need further testing
-		pb(a, b, true); // ! needs testing
-		pb(a, b, true); // ! needs testing
-		// sa(a, true);
-		// sb(b, true);
-		// pa(a, b, true); // ! needs testing
-		// pa(a, b, true); // ! needs testing
-		ss(a, b);
-		// sa(a, true);
+        // sb(*b, true);
+		// pa(a, b, true);
+		// pb(a, b, true);
+		// ss(a, b);
+        
+        ra(a, true);
 
     }
     else
