@@ -6,13 +6,13 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 14:40:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 15:23:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int     already_sorted(t_node **a)
+int     not_already_sorted(t_node **a)
 {
     t_node *current;
     t_node *next;
@@ -29,42 +29,45 @@ int     already_sorted(t_node **a)
     return (0);
 }
 
+int find_max(t_node **a)
+{
+    t_node *current;
+    int result;
+
+    current = *a;
+    result = current->nb;
+    while (current != NULL)
+    {
+        // printf("Current nb = %i\n", current->nb);
+        if (current->nb > result)
+            result = current->nb;
+        current = current->next;
+    }
+    return result / 10;
+}
+
 void    master_algo(t_node **a, t_node **b)
 {
-    int len_a;
-    int len_b;
+    t_node *current_a;
+    t_node *current_b;
 
-    len_a = lstsize(*a);
-    len_b = lstsize(*b);
-	// printf("size of a = %i\n", len_a);
-	// printf("size of b = %i\n", len_b);
-	if (len_a < 2)
-		return ;
-    if (already_sorted(a))
-    {
-        // ? Implement a single algorithm or several
-        // sa(a, true);
-        // sb(*b, true);
-		// pa(a, b, true);
-		// pb(a, b, true);
-		pb(a, b, true);
-		pb(a, b, true);
-		pb(a, b, true);
-		// ss(a, b);
-        
-
-        // ra(a, true);
-        // rra(a, true);
-        // rb(b, true);
-        // rr(a, b);
-        // rrb(b, true);
-        rrr(a, b);
-
-    }
-    else
-    {
-        printf("Shit's already sorted\n");
-        return ; // ! needs freeing ?
-    }
+ 
+    int max_radix = find_max(a);
+    printf("Max = %i", max_radix);
     
+    current_a = *a;
+    current_b = *b;
+	if (lstsize(*a) < 2)
+		return ;
+    if (not_already_sorted(a))
+    {
+        while (max_radix != 0) // outter loop for knowing the max number
+        {
+
+            // last condition
+            max_radix = max_radix / 10;           
+        }
+    }
+    else // already sorted a first time
+        return ; // ! needs freeing ?
 }

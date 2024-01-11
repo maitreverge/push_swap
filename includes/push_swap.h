@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 12:13:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 15:11:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_node
 {
 	int				nb;
+	int		radix;
 	struct s_node	*next;
 }			t_node;
 
@@ -39,7 +40,7 @@ void	fill_pre_buff(char **av_copy, long *pre_buff);
 void	init_stack(int ac, char **av, t_node **a);
 
 //master_algo
-int		already_sorted(t_node **a);
+int		not_already_sorted(t_node **a);
 void	master_algo(t_node **a, t_node **b);
 
 
