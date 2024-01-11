@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 11:49:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:42:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 // ! function needs to be valgrinded
 void	ra(t_node **a, bool to_print)
 {
-	t_node *new_first;
-	t_node *new_last;
-	t_node *old_first;
+	t_node	*new_first;
+	t_node	*new_last;
+	t_node	*old_first;
 
 	if (lstsize(*a) < 2)
 		return ;
 	new_last = *a;
 	old_first = *a;
 	new_first = (*a)->next;
-	
 	lstadd_back(a, lstnew(old_first->nb));
 	*a = new_first;
 	free(old_first);
@@ -35,16 +34,15 @@ void	ra(t_node **a, bool to_print)
 // ! function needs to be valgrinded
 void	rb(t_node **b, bool to_print)
 {
-	t_node *new_first;
-	t_node *new_last;
-	t_node *old_first;
-	
+	t_node	*new_first;
+	t_node	*new_last;
+	t_node	*old_first;
+
 	if (lstsize(*b) < 2)
 		return ;
 	new_last = *b;
 	old_first = *b;
 	new_first = (*b)->next;
-	
 	lstadd_back(b, lstnew(old_first->nb));
 	*b = new_first;
 	free(old_first);

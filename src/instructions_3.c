@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:27 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 14:36:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:41:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	rra(t_node **a, bool to_print)
 {
-	// The last element becomes the first one.
-	t_node *old_last;
-	t_node *new_last;
+	t_node	*old_last;
+	t_node	*new_last;
 
 	if (lstsize(*a) < 2)
 		return ;
@@ -35,9 +34,8 @@ void	rra(t_node **a, bool to_print)
 
 void	rrb(t_node **b, bool to_print)
 {
-	// The last element becomes the first one.
-	t_node *old_last;
-	t_node *new_last;
+	t_node	*old_last;
+	t_node	*new_last;
 
 	if (lstsize(*b) < 2)
 		return ;
