@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
+#    By: flverge <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/25 11:56:36 by flverge           #+#    #+#              #
-#    Updated: 2024/01/09 11:30:24 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/11 10:47:13 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@
 NAME = push_swap
 
 # Compiler options
-CC = cc
+CC = gcc
 
 # Valgrind flag
-CFLAGS = -Wall -Wextra -Werror -g
+# CFLAGS = -Wall -Wextra -Werror -g
 
 # Asan flag
-# CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 # libft
 LIBFT_NAME = libmaster.a

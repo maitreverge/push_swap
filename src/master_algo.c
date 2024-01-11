@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   master_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 18:35:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:46:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void    master_algo(t_node **a, t_node **b)
         // sb(*b); // ! need further testing
 		pb(a, b); // ! needs testing
 		pb(a, b); // ! needs testing
-		sa(a);
+		// sa(a);
 		sb(b);
 		pa(a, b); // ! needs testing
-		pa(a, b); // ! needs testing
+		// pa(a, b); // ! needs testing
 		// ss(a, b);
 		// sa(a);
 
