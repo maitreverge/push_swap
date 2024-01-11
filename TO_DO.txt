@@ -17,8 +17,28 @@ STACK B :
 ❌	rrb
 
 MULTI COMMANDS
-❌	ss
+✅	ss
 ❌	rr
 ❌	rrr
 
-😎
+😌 MINOR UPDATE :
+
+😎 MAJOR UPDATE :
+
+
+🔥 HOTFIX :
+
+🛠️ WORKING ON :
+
+🐛 BUG : 
+
+🚀 FAST SAVE
+
+📖 
+
+😑 bro...
+
+
+
+
+ADD DYOXYGEN COMMENT ON EACH FUNCTION

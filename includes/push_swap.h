@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 18:15:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:02:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h> // malloc, free and exit
 # include <limits.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 typedef struct s_node
 {
@@ -58,11 +59,12 @@ void	free_stack(t_node *a);
 int		lstsize(t_node *lst);
 
 // instruction_1
-void	sa(t_node **a);
-void	sb(t_node **b);
-void	pa(t_node **a, t_node **b);
-void	pb(t_node **a, t_node **b);
+void	sa(t_node **a, bool to_print);
+void	sb(t_node **b, bool to_print);
+void	pa(t_node **a, t_node **b, bool to_print);
+void	pb(t_node **a, t_node **b, bool to_print);
 void	ss(t_node **a, t_node **b);
+
 
 
 
