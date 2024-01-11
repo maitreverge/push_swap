@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 10:43:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:46:09 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	main(int ac, char **av)
 		// print_full(b, "Stack B Pre-Algo\n");
 		master_algo(&a, &b);
 		print_simple(a, "\nStack A Post-Algo\n");
-		// print_simple(b, "\nStack B Post-Algo\n");
+		print_simple(b, "\nStack B Post-Algo\n");
 		// print_full(a, "\nStack A Post-Algo\n");
-		print_full(b, "\nStack B Post-Algo\n");
+		// print_full(b, "\nStack B Post-Algo\n");
 		free_stack(a);
 		if (b != NULL)
 			free_stack(b);

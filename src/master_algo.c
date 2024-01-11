@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 11:37:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:53:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@ void    master_algo(t_node **a, t_node **b)
         // sa(a, true);
         // sb(*b, true);
 		// pa(a, b, true);
-		// pb(a, b, true);
+		pb(a, b, true);
+		pb(a, b, true);
+		pb(a, b, true);
+		pb(a, b, true);
 		// ss(a, b);
         
-        ra(a, true);
+        // ra(a, true);
+        // rb(b, true);
+        rr(a, b);
 
     }
     else
