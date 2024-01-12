@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/10 15:55:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:37:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	init_stack(int ac, char **av, t_node **a)
 	int		i;
 
 	if (ac == 2)
-		av_copy = ft_split(av[1], ' ');
+		av_copy = ft_split(av[1], ' '); // ! LEAK
 	else
 		av_copy = &av[1];
 	pre_buff = init_pre_buff(av_copy);
@@ -97,7 +97,10 @@ void	init_stack(int ac, char **av, t_node **a)
 	while (av_copy[i] != NULL)
 		i++;
 	fill_stack_a(pre_buff, a, i);
+	
+	// if ac == 2, maybe need freeing each buffer
 	if (ac == 2)
-		free(av_copy);
+		free_split(av_copy);
+		// free(av_copy); // ! Leaks supposed to be freed
 	free(pre_buff);
 }

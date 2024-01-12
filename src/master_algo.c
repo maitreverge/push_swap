@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   master_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 15:47:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:29:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,39 @@ void    calculate_radix(t_node **a, t_node **b, int i)
 
 void    master_algo(t_node **a, t_node **b)
 {
-    t_node *current_a;
-    t_node *current_b;
+    // t_node *current_a;
+    // t_node *current_b;
 
  
-    // int max_radix = find_max(a);
-    // printf("Max = %i\n", max_radix);
+    // // int max_radix = find_max(a);
+    // // printf("Max = %i\n", max_radix);
     
-    current_a = *a;
-    current_b = *b;
-	if (lstsize(*a) < 2)
-		return ;
+    // current_a = *a;
+    // current_b = *b;
+	// if (lstsize(*a) < 2)
+	// 	return ;
     if (not_already_sorted(a)) // turn this maybe into a while outter loop
     {
-        int i = 10;
-        int j = 0;
-        calculate_radix(a, b, i);
-        while (a)
-        {
-            if ((*a)->radix == j)
-                pb(a, b, true);
-            else
-                ra(a, true);
-        }
+        // int i = 10;
+        // int j = 0;
+        // calculate_radix(a, b, i);
+        // while (a)
+        // {
+        //     if ((*a)->radix == j)
+        //         pb(a, b, true);
+        //     else
+        //         ra(a, true);
+        // }
+
+		// ! testing leaks for instructions
+		// pb(a, b, true);
+		// pb(a, b, true);
+		// pb(a, b, true);
+		// pa(a, b, true);
+		// pa(a, b, true);
+		// pa(a, b, true);
+		
+		// sa(a, true);
     }
     else // already sorted a first time
         return ; // ! needs freeing ?

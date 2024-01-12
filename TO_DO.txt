@@ -7,19 +7,19 @@ INTRUCTIONS TO BE DONE :
 STACK A :
 ✅	sa
 ✅	pa 
-❌	ra 
-❌	rra 
+✅	ra 
+✅	rra 
 
 STACK B :
 ✅	sb (needs testing)
 ✅	pb 
-❌	rb 
-❌	rrb
+✅	rb 
+✅	rrb
 
 MULTI COMMANDS
 ✅	ss
-❌	rr
-❌	rrr
+✅	rr
+✅	rrr
 
 😌 MINOR UPDATE :
 

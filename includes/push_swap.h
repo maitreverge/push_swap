@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 15:11:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/12 13:20:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int		ft_is_space(char c);
 int		ft_is_num(char *str);
 long	ft_atol(const char *str);
 void	quit(long *to_free, int exit_code);
+void	free_split(char **to_free);
+
 
 // linked_list_functions
 
@@ -56,7 +58,7 @@ t_node	*lstnew(int content);
 void	lstadd_front(t_node **lst, t_node *new);
 void	lstadd_back(t_node **lst, t_node *new);
 t_node	*lstlast(t_node *lst);
-void	free_stack(t_node *a);
+void	free_stack(t_node *to_free);
 int		lstsize(t_node *lst);
 
 // instruction_1
