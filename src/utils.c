@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:15:52 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/12 10:36:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/12 13:37:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,15 @@ void	quit(long *to_free, int exit_code)
 
 void	free_split(char **to_free)
 {
-	int i;
+	char	**current;
+	int		i;
 
 	i = 0;
-	while (to_free[i])
+	current = to_free;
+	while (current[i])
 	{
-		free(to_free[i]);
+		free(current[i]);
 		i++;
 	}
+	free(to_free);
 }
