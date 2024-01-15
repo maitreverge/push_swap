@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/12 10:29:52 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/15 08:18:26 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,21 @@ void    master_algo(t_node **a, t_node **b)
 		// ! testing leaks for instructions
 		// pb(a, b, true);
 		// pb(a, b, true);
+		pb(a, b, true);
+		pb(a, b, true);
+		pb(a, b, true);
+		pa(a, b, true);
+		pa(a, b, true);
+		pa(a, b, true);
+		pa(a, b, true);
 		// pb(a, b, true);
-		// pa(a, b, true);
-		// pa(a, b, true);
-		// pa(a, b, true);
+		// pb(a, b, true);
+
 		
-		// sa(a, true);
+		// sb(b, true);
+		// sb(b, true);
+		// sb(b, true);
+		// ss(a, b);
     }
     else // already sorted a first time
         return ; // ! needs freeing ?
