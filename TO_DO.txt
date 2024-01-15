@@ -41,6 +41,11 @@ a bit of ✨norm✨
 😑 bro...
 
 
+Absolute path for visualizer :
+
+../../../push_swap_github/push_swap
+
+
 
 
 ADD DYOXYGEN COMMENT ON EACH FUNCTION

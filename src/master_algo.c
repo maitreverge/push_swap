@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/15 14:54:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:37:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,48 +54,63 @@ void    calculate_radix(t_node **a, t_node **b, int i)
     current_a = *a;
     current_b = *b;
     
-    while (current_a)
-    {
+    while (current_a != NULL)
         current_a->radix = current_a->nb % i;
         current_a = current_a->next;
     }
-    while (current_b)
+    while (current_b != NULL)
     {
         current_b->radix = current_b->nb % i;
         current_b = current_b->next;
     }
 }
 
+bool    no_j_left(t_node **node, int j)
+{
+    t_node *current;
+
+    current = *node;
+
+    while (current)
+    {
+        if (current->radix == j)
+            return false;
+        current = current->next;
+    }
+    return true;
+}
+
 void    master_algo(t_node **a, t_node **b)
 {
     t_node *current_a;
     t_node *current_b;
-
- 
-    // int max_radix = find_max(a);
-    // printf("Max = %i\n", max_radix);
     
     current_a = *a;
     current_b = *b;
-	if (lstsize(*a) < 2)
-		return ;
+    if (lstsize(*a) < 2)
+        return ;
     if (not_already_sorted(a)) // turn this maybe into a while outter loop
     {
-        int i = 10;
+        int i = 10; // calculate i based on the maximum number in stack a
         int j = 0;
-        calculate_radix(a, b, i);
-        while (a)
+        while (a && j < i) // loop until j is equal to i
         {
-            if ((*a)->radix == j)
-                pb(a, b, true);
-            else
-                ra(a, true);
+            calculate_radix(a, b, i);
+            while (!no_j_left(a, j))
+            {
+                if ((*a)->radix == j)
+                    pb(a, b, true);
+                else
+                    ra(a, true);
+            }
+            j++;
         }
-
     }
     else // already sorted a first time
-	{
-		printf("\nALREADY SORTED\n");
+    {
+        printf("\nALREADY SORTED\n");
         return ; // ! needs freeing ?
-	}
+    }
 }
+
+

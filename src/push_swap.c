@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/12 13:42:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:38:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ int	main(int ac, char **av)
 	if (!check_arg(ac, av))
 	{
 		init_stack(ac, av, &a);
-		print_simple(a, "\nStack A Pre-Algo\n");
-		print_simple(b, "\nStack B Pre-Algo\n");
+		// print_simple(a, "\nStack A Pre-Algo\n");
+		// print_simple(b, "\nStack B Pre-Algo\n");
 		// print_full(a, "Stack A Pre-Algo\n");
 		// print_full(b, "Stack B Pre-Algo\n");
 		master_algo(&a, &b);
-		print_simple(a, "\nStack A Post-Algo\n");
-		print_simple(b, "\nStack B Post-Algo\n");
+		// print_simple(a, "\nStack A Post-Algo\n");
+		// print_simple(b, "\nStack B Post-Algo\n");
 		// print_full(a, "\nStack A Post-Algo\n");
 		// print_full(b, "\nStack B Post-Algo\n");
 		free_stack(a); // ! self secured function

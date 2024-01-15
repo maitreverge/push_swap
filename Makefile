@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
+#    By: flverge <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/25 11:56:36 by flverge           #+#    #+#              #
-#    Updated: 2024/01/12 10:16:44 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/15 17:16:25 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = push_swap
 CC = gcc
 
 # Valgrind flag
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 # Asan flag
 # CFLAGS = -Wall -Wextra -Werror -fsanitize=address
