@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 11:59:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/15 08:20:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	pa(t_node **a, t_node **b, bool to_print)
 	t_node	*current_b;
 	t_node	*next_b;
 
+	if (!*b)
+		return ;
 	current_b = *b;
 	next_b = (*b)->next;
-	if (!b)
-		return ;
 	if (*a == NULL)
 		*a = lstnew((*b)->nb);
 	else
@@ -62,10 +62,10 @@ void	pb(t_node **a, t_node **b, bool to_print)
 	t_node	*current_a;
 	t_node	*next_a;
 
+	if (!*a)
+		return ;
 	current_a = *a;
 	next_a = (*a)->next;
-	if (!a)
-		return ;
 	if (*b == NULL)
 		*b = lstnew((*a)->nb);
 	else
