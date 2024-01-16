@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/15 20:37:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:37:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void    calculate_radix(t_node **a, t_node **b, int i)
     current_b = *b;
     
     while (current_a != NULL)
+    {
         current_a->radix = current_a->nb % i;
         current_a = current_a->next;
     }
@@ -80,6 +81,27 @@ bool    no_j_left(t_node **node, int j)
     return true;
 }
 
+void	display_radix(t_node **a, t_node **b)
+{
+	t_node *current_a;
+	t_node *current_b;
+
+	current_a = *a;
+	current_b = *b;
+
+	while (current_a)
+	{
+		printf("Current rdx node A = %i\n", current_a->radix);
+		current_a = current_a->next;
+	}
+
+	while (current_b)
+	{
+		printf("Current rdx node B = %i\n", current_b->radix);
+		current_b = current_b->next;
+	}
+}
+
 void    master_algo(t_node **a, t_node **b)
 {
     t_node *current_a;
@@ -93,11 +115,13 @@ void    master_algo(t_node **a, t_node **b)
     {
         int i = 10; // calculate i based on the maximum number in stack a
         int j = 0;
+		calculate_radix(a, b, i);
+		// display_radix(a, b);
         while (a && j < i) // loop until j is equal to i
         {
-            calculate_radix(a, b, i);
             while (!no_j_left(a, j))
             {
+				calculate_radix(a, b, i); // radix value does not follow during instructions
                 if ((*a)->radix == j)
                     pb(a, b, true);
                 else
