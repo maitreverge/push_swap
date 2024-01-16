@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/16 14:08:04 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:26:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,16 @@
 bool     already_sorted(t_node **a)
 {
     t_node *current;
-    t_node *next;
 
 	if (!*a)
 		return false;
 
     current = *a;
-    next = current->next;
     while (current->next != NULL)
     {
-        if (current->nb > next->nb)
+        if (current->nb > current->next->nb)
             return false;
         current = current->next;
-        next = current->next;
     }
     return true;
 }
@@ -113,8 +110,8 @@ void    master_algo(t_node **a, t_node **b)
         int j = 0;
 		// calculate_radix(a, b, i);
 
-		// while (!already_sorted(a) && i < INT_MAX) // ! OUTTER LOOP
-		// {
+		while (!already_sorted(a)) // ! OUTTER LOOP
+		{
 			while (a && j < 10) // * loop for a
 			{
 				calculate_radix(a, i);
@@ -145,7 +142,7 @@ void    master_algo(t_node **a, t_node **b)
 			}
 			i *= 10;
 			j = 0;
-		// }
+		}
 	}
     else // already sorted a first time
     {
