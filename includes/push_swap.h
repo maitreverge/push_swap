@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/12 13:20:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/16 13:02:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fill_pre_buff(char **av_copy, long *pre_buff);
 void	init_stack(int ac, char **av, t_node **a);
 
 //master_algo
-int		not_already_sorted(t_node **a);
+bool		not_already_sorted(t_node **a);
 void	master_algo(t_node **a, t_node **b);
 
 
