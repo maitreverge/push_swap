@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/16 14:26:34 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:03:08 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ bool     already_sorted(t_node **a)
     while (current->next != NULL)
     {
         if (current->nb > current->next->nb)
+            return false;
+        current = current->next;
+    }
+    return true;
+}
+
+bool     already_reversed_sorted(t_node **a)
+{
+    t_node *current;
+
+	if (!*a)
+		return false;
+
+    current = *a;
+    while (current->next != NULL)
+    {
+        if (current->nb < current->next->nb)
             return false;
         current = current->next;
     }
@@ -110,9 +127,9 @@ void    master_algo(t_node **a, t_node **b)
         int j = 0;
 		// calculate_radix(a, b, i);
 
-		while (!already_sorted(a)) // ! OUTTER LOOP
-		{
-			while (a && j < 10) // * loop for a
+		// while (!already_sorted(a)) // ! OUTTER LOOP
+		// {
+			while (*a) // * loop for a
 			{
 				calculate_radix(a, i);
 				while (!no_j_left(a, j))
@@ -127,14 +144,17 @@ void    master_algo(t_node **a, t_node **b)
 			}
 			i *= 10;
 			j = 0;
-			while (b && j < 10) // * loop for b
+			while (*b) // * loop for b
 			{
 				calculate_radix(b, i); // radix value does not follow during instructions
 				while (!no_j_left(b, j))
 				{
 					calculate_radix(b, i); // radix value does not follow during instructions
 					if ((*b)->radix == j)
+                    {
 						pa(a, b, true);
+                        ra(a, true);
+                    }
 					else
 						rb(b, true);
 				}
@@ -142,7 +162,12 @@ void    master_algo(t_node **a, t_node **b)
 			}
 			i *= 10;
 			j = 0;
-		}
+            // ! check if a is reversed sorted
+            // if (already_reversed_sorted(a))
+            // {
+                
+            // }
+		// }
 	}
     else // already sorted a first time
     {
