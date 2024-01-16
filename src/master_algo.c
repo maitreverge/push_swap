@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/16 13:47:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/16 13:54:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,16 @@ int find_max(t_node **a)
     return result / 10;
 }
 
-void    calculate_radix(t_node **a, t_node **b, int i)
+void    calculate_radix(t_node **node, int i)
 {
     t_node  *current_a;
-    t_node  *current_b;
 
-    current_a = *a;
-    current_b = *b;
+    current_a = *node;
     
     while (current_a)
     {
         current_a->radix = current_a->nb % i;
         current_a = current_a->next;
-    }
-    while (current_b)
-    {
-        current_b->radix = current_b->nb % i;
-        current_b = current_b->next;
     }
 }
 
@@ -124,10 +117,10 @@ void    master_algo(t_node **a, t_node **b)
 		{
 			while (a && j < 10) // * loop for a
 			{
-				calculate_radix(a, b, i);
+				calculate_radix(a, i);
 				while (!no_j_left(a, j))
 				{
-					calculate_radix(a, b, i); // radix value does not follow during instructions
+					calculate_radix(a, i); // radix value does not follow during instructions
 					if ((*a)->radix == j)
 						pb(a, b, true);
 					else
@@ -139,10 +132,10 @@ void    master_algo(t_node **a, t_node **b)
 			j = 0;
 			while (b && j < 10) // * loop for b
 			{
-				calculate_radix(a, b, i); // radix value does not follow during instructions
+				calculate_radix(b, i); // radix value does not follow during instructions
 				while (!no_j_left(b, j))
 				{
-					calculate_radix(a, b, i); // radix value does not follow during instructions
+					calculate_radix(b, i); // radix value does not follow during instructions
 					if ((*b)->radix == j)
 						pa(a, b, true);
 					else
