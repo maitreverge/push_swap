@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/17 10:57:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:31:24 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool     already_reversed_sorted(t_node **a)
 	if (!*a)
 		return false;
 
-    current = *a;
+    current = *a; 
     while (current->next != NULL)
     {
         if (current->nb < current->next->nb)
@@ -145,33 +145,35 @@ void    master_algo(t_node **a, t_node **b)
 			}
 			i *= 10;
 			j = 0;
-			while (*b) // * loop for b
+			
+			
+            if (already_reversed_sorted(b) && *b)
 			{
-				calculate_radix(b, i); // radix value does not follow during instructions
-				while (!no_j_left(b, j))
+				while (*b)
+					pa(a, b, true);
+			}
+			
+			else
+			{
+				while (*b) // * loop for b
 				{
 					calculate_radix(b, i); // radix value does not follow during instructions
-					if ((*b)->radix == j)
-                    {
-						pa(a, b, true);
-                        ra(a, true); // ? ra for making shit in the right order, maybe find another way around
-                    }
-					else
-						rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
+					while (!no_j_left(b, j))
+					{
+						calculate_radix(b, i); // radix value does not follow during instructions
+						if ((*b)->radix == j)
+						{
+							pa(a, b, true);
+							ra(a, true); // ? ra for making shit in the right order, maybe find another way around
+						}
+						else
+							rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
+					}
+					j++;
 				}
-				j++;
+				i *= 10;
+				j = 0;
 			}
-			i *= 10;
-			j = 0;
-            // ! check if a is reversed sorted
-            if (already_reversed_sorted(b))
-            {
-				while (*b)
-				{
-					// rra(a, true);
-					pa(a, b, true);
-				}
-            }
 		}
 	}
     else // already sorted a first time
@@ -180,5 +182,4 @@ void    master_algo(t_node **a, t_node **b)
         return ; // ! needs freeing ?
     }
 }
-
 
