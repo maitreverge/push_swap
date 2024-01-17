@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   master_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/17 14:31:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:54:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,48 @@ void	display_radix(t_node **a, t_node **b)
 	}
 }
 
+void	rotate_stack_a(t_node **to_test, t_node **a, t_node **b, int i)
+{
+	t_node *current;
+	int index = 0;
+
+	current = *to_test;
+
+	int len_stack = lstsize(current) / 2;
+
+	while (current->radix != i && current)
+	{
+		index++;
+		current = current->next;
+	}
+	
+	if (index < len_stack)
+		ra(a, true);
+	else
+		rra(a, true);
+}
+
+void	rotate_stack_b(t_node **to_test, t_node **a, t_node **b, int i)
+{
+	t_node *current;
+	int index = 0;
+
+	current = *to_test;
+
+	int len_stack = lstsize(current) / 2;
+
+	while (current->radix != i && current)
+	{
+		index++;
+		current = current->next;
+	}
+	
+	if (index < len_stack)
+		rb(b, true);
+	else
+		rrb(b, true);
+}
+
 void    master_algo(t_node **a, t_node **b)
 {
     t_node *current_a;
@@ -125,7 +167,7 @@ void    master_algo(t_node **a, t_node **b)
     {
         int i = 10; // calculate i based on the maximum number in stack a
         int j = -9;
-		// calculate_radix(a, b, i);
+		// calculate_radix(a, i);
 		
 		// ! needs a master condition for making the two stacks go back and forth until a is sorted
 		while (!already_sorted(a)) // ! OUTTER LOOP
@@ -139,7 +181,8 @@ void    master_algo(t_node **a, t_node **b)
 					if ((*a)->radix == j)
 						pb(a, b, true);
 					else
-						ra(a, true); // ! needs opti here if the next number is lower OR higher in the stack
+						rotate_stack_a(a, a, b, j);
+						// ra(a, true); // ! needs opti here if the next number is lower OR higher in the stack
 				}
 				j++;
 			}
@@ -167,7 +210,8 @@ void    master_algo(t_node **a, t_node **b)
 							ra(a, true); // ? ra for making shit in the right order, maybe find another way around
 						}
 						else
-							rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
+							rotate_stack_b(b, a, b, j);
+							// rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
 					}
 					j++;
 				}
