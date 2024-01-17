@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   master_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/16 20:03:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/17 10:57:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,12 @@ void    master_algo(t_node **a, t_node **b)
     if (!already_sorted(a)) // turn this maybe into a while outter loop
     {
         int i = 10; // calculate i based on the maximum number in stack a
-        int j = 0;
+        int j = -9;
 		// calculate_radix(a, b, i);
-
-		// while (!already_sorted(a)) // ! OUTTER LOOP
-		// {
+		
+		// ! needs a master condition for making the two stacks go back and forth until a is sorted
+		while (!already_sorted(a)) // ! OUTTER LOOP
+		{
 			while (*a) // * loop for a
 			{
 				calculate_radix(a, i);
@@ -138,7 +139,7 @@ void    master_algo(t_node **a, t_node **b)
 					if ((*a)->radix == j)
 						pb(a, b, true);
 					else
-						ra(a, true);
+						ra(a, true); // ! needs opti here if the next number is lower OR higher in the stack
 				}
 				j++;
 			}
@@ -153,21 +154,25 @@ void    master_algo(t_node **a, t_node **b)
 					if ((*b)->radix == j)
                     {
 						pa(a, b, true);
-                        ra(a, true);
+                        ra(a, true); // ? ra for making shit in the right order, maybe find another way around
                     }
 					else
-						rb(b, true);
+						rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
 				}
 				j++;
 			}
 			i *= 10;
 			j = 0;
             // ! check if a is reversed sorted
-            // if (already_reversed_sorted(a))
-            // {
-                
-            // }
-		// }
+            if (already_reversed_sorted(b))
+            {
+				while (*b)
+				{
+					// rra(a, true);
+					pa(a, b, true);
+				}
+            }
+		}
 	}
     else // already sorted a first time
     {
