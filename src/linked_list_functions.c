@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 11:14:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:52:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_node	*lstnew(int content, int index)
 		return (NULL);
 	new_element->nb = content;
 	new_element->index = index;
+	new_element->prev = NULL;
 	new_element->next = NULL;
 	return (new_element);
 }
@@ -30,6 +31,8 @@ void	lstadd_front(t_node **lst, t_node *new)
 	if (lst == NULL || new == NULL)
 		return ;
 	new->next = *lst;
+	if (*lst != NULL)
+		(*lst)->prev = new;
 	*lst = new;
 }
 
@@ -43,7 +46,10 @@ void	lstadd_back(t_node **lst, t_node *new)
 	if (!last)
 		*lst = new;
 	else
+	{
 		last->next = new;
+		new->prev = last;	
+	}
 }
 
 t_node	*lstlast(t_node *lst)
@@ -68,6 +74,8 @@ void	free_stack(t_node *to_free)
 	while (current != NULL)
 	{
 		next = current->next;
+		if (next != NULL)
+			next->prev = NULL;
 		free(current);
 		current = next;
 	}

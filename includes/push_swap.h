@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 11:19:22 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:49:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_node
 	int				nb;
 	size_t		index; // faire suivre l'index dans les instructions ou pas ??
 	int		radix;
+	struct s_node	*prev;
 	struct s_node	*next;
 }			t_node;
 

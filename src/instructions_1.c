@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 11:23:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:00:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,40 +50,32 @@ void	sb(t_node **b, bool to_print)
 
 void	pa(t_node **a, t_node **b, bool to_print)
 {
-	t_node	*current_b;
-	t_node	*next_b;
+    t_node	*current_b;
 
-	if (!*b)
-		return ;
-	current_b = *b;
-	next_b = (*b)->next;
-	if (*a == NULL)
-		*a = lstnew((*b)->nb, (*b)->index);
-	else
-		lstadd_front(a, lstnew((*b)->nb, (*b)->index));
-	*b = next_b;
-	free(current_b);
-	if (to_print)
-		ft_printf("pa\n");
+    if (!*b)
+        return ;
+    current_b = *b;
+    *b = (*b)->next;
+    if (*b != NULL)
+        (*b)->prev = NULL;
+    lstadd_front(a, current_b);
+    if (to_print)
+        ft_printf("pa\n");
 }
 
 void	pb(t_node **a, t_node **b, bool to_print)
 {
-	t_node	*current_a;
-	t_node	*next_a;
+    t_node	*current_a;
 
-	if (!*a)
-		return ;
-	current_a = *a;
-	next_a = (*a)->next;
-	if (*b == NULL)
-		*b = lstnew((*a)->nb, (*a)->index);
-	else
-		lstadd_front(b, lstnew((*a)->nb, (*a)->index));
-	*a = next_a;
-	free(current_a);
-	if (to_print)
-		ft_printf("pb\n");
+    if (!*a)
+        return ;
+    current_a = *a;
+    *a = (*a)->next;
+    if (*a != NULL)
+        (*a)->prev = NULL;
+    lstadd_front(b, current_a);
+    if (to_print)
+        ft_printf("pb\n");
 }
 
 void	ss(t_node **a, t_node **b)
