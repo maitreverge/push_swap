@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 11:32:49 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:09:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,20 +162,28 @@ void	display_radix(t_node **a, t_node **b)
 
 void	rotate_stack_a(t_node **a, int i)
 {
-	t_node *current;
-	int index = 0;
+	t_node *start;
+	t_node *end;
+	int index_start = 0;
+	int index_end = 0;
 
-	current = *a;
+	start = *a;
+	end = lstlast(*a);
 
-	int len_stack = lstsize(current) / 2;
-
-	while (current->radix != i)
+	// calculate the first occurence from the beggining
+	while (start->radix != i)
 	{
-		index++;
-		current = current->next;
+		index_start++;
+		start = start->next;
+	}
+	// calculate the first occurence from the end
+	while (end->radix != i)
+	{
+		index_end++;
+		end = end->prev;
 	}
 	
-	if (index <= len_stack)
+	if (index_1 <= index_2)
 		ra(a, true);
 	else
 		rra(a, true);
@@ -183,20 +191,28 @@ void	rotate_stack_a(t_node **a, int i)
 
 void	rotate_stack_b(t_node **b, int i)
 {
-	t_node *current;
-	int index = 0;
+	t_node *start;
+	t_node *end;
+	int index_start = 0;
+	int index_end = 0;
 
-	current = *b;
+	start = *b;
+	end = lstlast(*b);
 
-	int len_stack = lstsize(current) / 2;
-
-	while (current->radix != i)
+	// calculate the first occurence from the beggining
+	while (start->radix != i)
 	{
-		index++;
-		current = current->next;
+		index_start++;
+		start = start->next;
+	}
+	// calculate the first occurence from the end
+	while (end->radix != i)
+	{
+		index_end++;
+		end = end->prev;
 	}
 	
-	if (index <= len_stack)
+	if (index_1 <= index_2)
 		rb(b, true);
 	else
 		rrb(b, true);
