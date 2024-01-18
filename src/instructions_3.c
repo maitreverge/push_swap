@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:27 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/11 14:41:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 09:28:08 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	rrb(t_node **b, bool to_print)
 	lstadd_front(b, lstnew(old_last->nb));
 	new_last->next = NULL;
 	free(old_last);
-	if (to_print)
-		ft_printf("rra\n");
 	if (to_print)
 		ft_printf("rrb\n");
 }

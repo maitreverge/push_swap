@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 08:41:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 09:23:16 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ int find_max(t_node **a)
 
 void    calculate_radix(t_node **node, int i)
 {
-    t_node  *current_a;
+    t_node  *current;
 
-    current_a = *node;
+    current = *node;
     
-    while (current_a)
+    while (current)
     {
-        current_a->radix = current_a->nb % i;
-        current_a = current_a->next;
+        current->radix = current->nb % i;
+        current = current->next;
     }
 }
 
@@ -121,7 +121,7 @@ void	rotate_stack_a(t_node **a, int i)
 
 	int len_stack = lstsize(current) / 2;
 
-	while (current->radix != i && current->next != NULL)
+	while (current->radix != i)
 	{
 		index++;
 		current = current->next;
@@ -142,7 +142,7 @@ void	rotate_stack_b(t_node **b, int i)
 
 	int len_stack = lstsize(current) / 2;
 
-	while (current->radix != i && current->next != NULL)
+	while (current->radix != i)
 	{
 		index++;
 		current = current->next;
@@ -166,7 +166,7 @@ void    master_algo(t_node **a, t_node **b)
     if (!already_sorted(a)) // turn this maybe into a while outter loop
     {
         int i = 10; // calculate i based on the maximum number in stack a
-        int j = -9;
+        int j = 0;
 		// calculate_radix(a, i);
 		
 		// ! needs a master condition for making the two stacks go back and forth until a is sorted
@@ -177,19 +177,17 @@ void    master_algo(t_node **a, t_node **b)
 				calculate_radix(a, i);
 				while (!no_j_left(a, j))
 				{
-					calculate_radix(a, i); // radix value does not follow during instructions
 					if ((*a)->radix == j)
 						pb(a, b, true);
 					else
 						rotate_stack_a(a, j);
 						// ra(a, true); // ! needs opti here if the next number is lower OR higher in the stack
+					calculate_radix(a, i); // radix value does not follow during instructions
 				}
 				j++;
 			}
-			i *= 10;
-			j = 0;
 			
-			
+			// ! If b is reversed sorted, push a until it ends
             if (already_reversed_sorted(b) && *b)
 			{
 				while (*b)
@@ -198,20 +196,22 @@ void    master_algo(t_node **a, t_node **b)
 			
 			else
 			{
+				i *= 10;
+				j = 0;
 				while (*b) // * loop for b
 				{
 					calculate_radix(b, i); // radix value does not follow during instructions
 					while (!no_j_left(b, j))
 					{
-						calculate_radix(b, i); // radix value does not follow during instructions
 						if ((*b)->radix == j)
 						{
 							pa(a, b, true);
-							ra(a, true); // ? ra for making shit in the right order, maybe find another way around
+							// ra(a, true); // ? ra for making shit in the right order, maybe find another way around
 						}
 						else
 							rotate_stack_b(b, j);
 							// rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
+						calculate_radix(b, i); // radix value does not follow during instructions
 					}
 					j++;
 				}
