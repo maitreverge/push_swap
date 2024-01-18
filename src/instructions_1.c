@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/15 08:20:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:16:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,36 @@
 
 void	sa(t_node **a, bool to_print)
 {
-	int	temp;
+	int	temp_nb;
+	int	temp_index;
 
 	if (lstsize(*a) < 2)
 		return ;
-	temp = (*a)->nb;
+	temp_nb = (*a)->nb;
 	(*a)->nb = (*a)->next->nb;
-	(*a)->next->nb = temp;
+	(*a)->next->nb = temp_nb;
+
+	temp_index = (*a)->index;
+	(*a)->index = (*a)->next->index;
+	(*a)->next->index = temp_index;
 	if (to_print)
 		ft_printf("sa\n");
 }
 
 void	sb(t_node **b, bool to_print)
 {
-	int	temp;
+	int	temp_nb;
+	int	temp_index;
 
 	if (lstsize(*b) < 2)
 		return ;
-	temp = (*b)->nb;
+	temp_nb = (*b)->nb;
 	(*b)->nb = (*b)->next->nb;
-	(*b)->next->nb = temp;
+	(*b)->next->nb = temp_nb;
+
+	temp_index = (*b)->index;
+	(*b)->index = (*b)->next->index;
+	(*b)->next->index = temp_index;
 	if (to_print)
 		ft_printf("sb\n");
 }
@@ -67,9 +77,9 @@ void	pb(t_node **a, t_node **b, bool to_print)
 	current_a = *a;
 	next_a = (*a)->next;
 	if (*b == NULL)
-		*b = lstnew((*a)->nb);
+		*b = lstnew((*a)->nb), (*a)->index);
 	else
-		lstadd_front(b, lstnew((*a)->nb));
+		lstadd_front(b, lstnew((*a)->nb), (*a)->index);
 	*a = next_a;
 	free(current_a);
 	if (to_print)

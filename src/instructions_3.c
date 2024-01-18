@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:27 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 09:28:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:20:16 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	rra(t_node **a, bool to_print)
 		old_last = old_last->next;
 	while (new_last->next->next != NULL)
 		new_last = new_last->next;
-	lstadd_front(a, lstnew(old_last->nb));
+	lstadd_front(a, lstnew(old_last->nb, old_last->index));
 	new_last->next = NULL;
 	free(old_last);
 	if (to_print)
@@ -45,7 +45,7 @@ void	rrb(t_node **b, bool to_print)
 		old_last = old_last->next;
 	while (new_last->next->next != NULL)
 		new_last = new_last->next;
-	lstadd_front(b, lstnew(old_last->nb));
+	lstadd_front(b, lstnew(old_last->nb, old_last->index));
 	new_last->next = NULL;
 	free(old_last);
 	if (to_print)

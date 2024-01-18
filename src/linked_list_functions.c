@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/12 13:21:16 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:14:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_node	*lstnew(int content)
+t_node	*lstnew(int content, int index)
 {
 	t_node	*new_element;
 
@@ -20,6 +20,7 @@ t_node	*lstnew(int content)
 	if (!new_element)
 		return (NULL);
 	new_element->nb = content;
+	new_element->index = index;
 	new_element->next = NULL;
 	return (new_element);
 }
