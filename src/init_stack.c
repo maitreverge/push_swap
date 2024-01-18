@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/12 13:37:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:30:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	fill_stack_a(long *buffer, t_node **a, int size)
 	while (i < size)
 	{
 		if (*a == NULL)
-			*a = lstnew((int)buffer[i]);
+			*a = lstnew((int)buffer[i], 0);
 		else
-			lstadd_back(a, lstnew((int)buffer[i]));
+			lstadd_back(a, lstnew((int)buffer[i], 0));
 		i++;
 	}
 }
