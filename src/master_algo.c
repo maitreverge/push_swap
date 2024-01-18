@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 09:23:16 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:06:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,80 @@ bool     already_reversed_sorted(t_node **a)
     return true;
 }
 
-int find_max(t_node **a)
+int find_max(t_node **node)
 {
     t_node *current;
-    int result;
+    int max;
 
-    current = *a;
-    result = INT_MIN;
+    current = *node;
+    max = INT_MIN;
     while (current != NULL)
     {
         // printf("Current nb = %i\n", current->nb);
-        if (current->nb > result)
-            result = current->nb;
+        if (current->nb > max)
+            max = current->nb;
         current = current->next;
     }
-    return result / 10;
+    return max;
+}
+
+int find_min(t_node **node)
+{
+    t_node *current;
+    int min;
+
+    current = *node;
+    min = INT_MAX;
+    while (current != NULL)
+    {
+        if (current->nb < min)
+            min = current->nb;
+        current = current->next;
+    }
+    return min;
+}
+
+void	calculate_index(t_node **node)
+{
+	t_node *current;
+
+	int index = 0;
+
+	current = *node;
+
+	int max = find_max(node);
+	int min = find_min(node);
+
+	while (min <= max)
+	{
+		if (current->nb == min)
+		{
+			current->index = index;
+			index++;
+			min++;
+		}
+		else
+		{
+			if (current->next == NULL)
+			{
+				current = *node;
+				min++;
+			}
+			else
+				current = current->next;
+		}
+	}
 }
 
 void    calculate_radix(t_node **node, int i)
 {
     t_node  *current;
-
+	
     current = *node;
-    
+	// calculate_index(node);
     while (current)
     {
-        current->radix = current->nb % i;
+        current->radix = current->index % i;
         current = current->next;
     }
 }
@@ -158,7 +206,7 @@ void    master_algo(t_node **a, t_node **b)
 {
     t_node *current_a;
     t_node *current_b;
-    
+
     current_a = *a;
     current_b = *b;
     if (lstsize(*a) < 2)
@@ -167,7 +215,11 @@ void    master_algo(t_node **a, t_node **b)
     {
         int i = 10; // calculate i based on the maximum number in stack a
         int j = 0;
+		
 		// calculate_radix(a, i);
+		// display_radix(a, b);
+
+		calculate_index(a);
 		
 		// ! needs a master condition for making the two stacks go back and forth until a is sorted
 		while (!already_sorted(a)) // ! OUTTER LOOP
