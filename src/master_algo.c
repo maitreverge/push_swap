@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 11:06:01 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:32:49 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ void    master_algo(t_node **a, t_node **b)
 						if ((*b)->radix == j)
 						{
 							pa(a, b, true);
-							// ra(a, true); // ? ra for making shit in the right order, maybe find another way around
+							ra(a, true); // ? ra for making shit in the right order, maybe find another way around
 						}
 						else
 							rotate_stack_b(b, j);
