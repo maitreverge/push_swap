@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:20:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/17 17:54:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 08:41:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,43 +112,43 @@ void	display_radix(t_node **a, t_node **b)
 	}
 }
 
-void	rotate_stack_a(t_node **to_test, t_node **a, t_node **b, int i)
+void	rotate_stack_a(t_node **a, int i)
 {
 	t_node *current;
 	int index = 0;
 
-	current = *to_test;
+	current = *a;
 
 	int len_stack = lstsize(current) / 2;
 
-	while (current->radix != i && current)
+	while (current->radix != i && current->next != NULL)
 	{
 		index++;
 		current = current->next;
 	}
 	
-	if (index < len_stack)
+	if (index <= len_stack)
 		ra(a, true);
 	else
 		rra(a, true);
 }
 
-void	rotate_stack_b(t_node **to_test, t_node **a, t_node **b, int i)
+void	rotate_stack_b(t_node **b, int i)
 {
 	t_node *current;
 	int index = 0;
 
-	current = *to_test;
+	current = *b;
 
 	int len_stack = lstsize(current) / 2;
 
-	while (current->radix != i && current)
+	while (current->radix != i && current->next != NULL)
 	{
 		index++;
 		current = current->next;
 	}
 	
-	if (index < len_stack)
+	if (index <= len_stack)
 		rb(b, true);
 	else
 		rrb(b, true);
@@ -181,7 +181,7 @@ void    master_algo(t_node **a, t_node **b)
 					if ((*a)->radix == j)
 						pb(a, b, true);
 					else
-						rotate_stack_a(a, a, b, j);
+						rotate_stack_a(a, j);
 						// ra(a, true); // ! needs opti here if the next number is lower OR higher in the stack
 				}
 				j++;
@@ -210,7 +210,7 @@ void    master_algo(t_node **a, t_node **b)
 							ra(a, true); // ? ra for making shit in the right order, maybe find another way around
 						}
 						else
-							rotate_stack_b(b, a, b, j);
+							rotate_stack_b(b, j);
 							// rb(b, true); // ! needs opti here if the next number is lower OR higher in the stack
 					}
 					j++;
