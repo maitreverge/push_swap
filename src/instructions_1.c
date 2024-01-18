@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/18 11:16:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:23:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	pa(t_node **a, t_node **b, bool to_print)
 	current_b = *b;
 	next_b = (*b)->next;
 	if (*a == NULL)
-		*a = lstnew((*b)->nb);
+		*a = lstnew((*b)->nb, (*b)->index);
 	else
-		lstadd_front(a, lstnew((*b)->nb));
+		lstadd_front(a, lstnew((*b)->nb, (*b)->index));
 	*b = next_b;
 	free(current_b);
 	if (to_print)
@@ -77,9 +77,9 @@ void	pb(t_node **a, t_node **b, bool to_print)
 	current_a = *a;
 	next_a = (*a)->next;
 	if (*b == NULL)
-		*b = lstnew((*a)->nb), (*a)->index);
+		*b = lstnew((*a)->nb, (*a)->index);
 	else
-		lstadd_front(b, lstnew((*a)->nb), (*a)->index);
+		lstadd_front(b, lstnew((*a)->nb, (*a)->index));
 	*a = next_a;
 	free(current_a);
 	if (to_print)
