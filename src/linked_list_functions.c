@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 15:46:48 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:53:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ int	lstsize(t_node *lst)
 
 void	free_stack(t_node *to_free)
 {
-	t_node *head;
-	t_node *tail;
+	t_node *current;
+	t_node *next;
 	if (!to_free)
 		return ;
 	else if (!to_free->next)
@@ -113,9 +113,15 @@ void	free_stack(t_node *to_free)
 		free(to_free);
 		return ;
 	}
-	head = to_free;
-	tail = lstlast(head);
-	
-	
+	current = to_free;
+	current->prev->next = NULL;
+	while (current)
+	{
+		next = current->next;
+		if (!next)
+			next->prev = NULL;
+		free(current);
+		current = next;
+	}
 }
 
