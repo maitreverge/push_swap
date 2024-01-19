@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 17:57:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:05:09 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ void	lstadd_back(t_node **lst, t_node *new)
 
 void	lstadd_front(t_node **lst, t_node *new)
 {
+	t_node	*head;
+	t_node	*tail;
+
+	head = *lst;
+	tail = lstlast(*lst);
 	if (!(*lst))
 		return ;
-	// ! EDGE CASE : if the list only got one node
-	if ((*lst)->prev == NULL)
-	{
-		new->next = *lst;
-		new->prev = *lst;
-		(*lst)->next = new;
-		(*lst)->prev = new;
-		return ;
-	}
-	
+	new->next = head;
+	new->prev = tail;
+	tail->next = new;
+	head->prev = new;
+	*lst = new;
 }
 
 int	lstsize(t_node *lst)
