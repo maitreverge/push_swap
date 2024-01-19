@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 14:40:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:43:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,21 @@ void	print_simple(t_node *a, char *message)
 
 void	print_full(t_node *a, char *message)
 {
-	t_node	*current;
+	t_node *current;
+	t_node *tail;
 
 	current = a;
+	tail = lstlast(a);
 
 	printf("%s", message);
-	while (current != a)
+	do
 	{
 		printf("Node adress = %p\n", current);
 		printf("Node nb = %i\n", current->nb);
 		printf("Node prev = %p\n", current->prev);
 		printf("Node next = %p\n\n", current->next);
 		current = current->next;
-	}
+	} while (current != tail && current);
 }
 
 int	main(int ac, char **av)
@@ -63,8 +65,8 @@ int	main(int ac, char **av)
 		// print_simple(b, "\nStack B Post-Algo\n");
 		// print_full(a, "\nStack A Post-Algo\n");
 		// print_full(b, "\nStack B Post-Algo\n");
-		free_stack(a); // ! self secured function
-		free_stack(b); // ! self secured function
+		// free_stack(a); // ! self secured function
+		// free_stack(b); // ! self secured function
 	}
 	else
 		printf("Error\n");
