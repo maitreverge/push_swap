@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 16:53:03 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:08:29 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,6 @@ void	free_stack(t_node *to_free)
 	while (current)
 	{
 		next = current->next;
-		if (!next)
-			next->prev = NULL;
 		free(current);
 		current = next;
 	}
