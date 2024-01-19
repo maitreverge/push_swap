@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 16:23:23 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:42:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,61 @@
 
 void	print_simple(t_node *a, char *message)
 {
-	t_node	*current;
+	t_node *head;
+	t_node *tail;
 
-	current = a;
+	head = a;
+	tail = lstlast(a);
 
 	printf("%s", message);
-	while (current != NULL)
+	if (!a)
+		return ;
+	else if (!head->next)
+		printf("Node nb = %i\n", head->nb);
+	else
 	{
-		printf("Node nb = %i\n", current->nb);
-		current = current->next;
+		do
+		{
+			printf("Node nb = %i\n", head->nb);
+			head = head->next;
+		} while (head != tail);
+		printf("Node nb = %i\n", head->nb);
 	}
 }
 
 void	print_full(t_node *a, char *message)
 {
-	t_node *current;
+	t_node *head;
 	t_node *tail;
 
-	current = a;
+	head = a;
 	tail = lstlast(a);
 
 	printf("%s", message);
-	do
+	if (!a)
+		return ;
+	else if (!head->next)
 	{
-		printf("Node adress = %p\n", current);
-		printf("Node nb = %i\n", current->nb);
-		printf("Node prev = %p\n", current->prev);
-		printf("Node next = %p\n\n", current->next);
-		current = current->next;
-	} while (current != tail && current);
+		printf("Node adress = %p\n", head);
+		printf("Node nb = %i\n", head->nb);
+		printf("Node prev = %p\n", head->prev);
+		printf("Node next = %p\n\n", head->next);
+	}
+	else
+	{
+		do
+		{
+			printf("Node adress = %p\n", head);
+			printf("Node nb = %i\n", head->nb);
+			printf("Node prev = %p\n", head->prev);
+			printf("Node next = %p\n\n", head->next);
+			head = head->next;
+		} while (head != tail);
+		printf("Node adress = %p\n", head);
+		printf("Node nb = %i\n", head->nb);
+		printf("Node prev = %p\n", head->prev);
+		printf("Node next = %p\n\n", head->next);
+	}
 }
 
 int	main(int ac, char **av)
@@ -66,7 +92,7 @@ int	main(int ac, char **av)
 		// print_full(a, "\nStack A Post-Algo\n");
 		// print_full(b, "\nStack B Post-Algo\n");
 		free_stack(a); // ! self secured function
-		// free_stack(b); // ! self secured function
+		free_stack(b); // ! self secured function
 	}
 	else
 		printf("Error\n");

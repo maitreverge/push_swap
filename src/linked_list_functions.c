@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 17:08:29 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:30:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,13 @@ void	lstadd_back(t_node **lst, t_node *new)
 	t_node *tail;
 
 	head = *lst;
-	tail = lstlast(head);
+	tail = lstlast(*lst);
 	if (!(*lst))
 		return ;
-	// ! EDGE CASE : if the list only got one node
-	if (head->next == NULL)
-	{
-		new->next = head;
-		new->prev = head;
-		head->next = new;
-		head->prev = new;
-		return ;
-	}
-	else
-	{
-		new->prev = tail;
-		new->next = head;
-	}
-	
+	new->next = head;
+	new->prev = tail;
+	tail->next = new;
+	head->prev = new;
 }
 
 
@@ -100,8 +89,6 @@ int	lstsize(t_node *lst)
 	return (i);	
 }
 
-
-
 void	free_stack(t_node *to_free)
 {
 	t_node *current;
@@ -122,4 +109,3 @@ void	free_stack(t_node *to_free)
 		current = next;
 	}
 }
-
