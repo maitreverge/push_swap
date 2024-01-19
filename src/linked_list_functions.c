@@ -6,20 +6,20 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 17:30:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:57:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_node *lstlast(t_node *lst)
+t_node	*lstlast(t_node *lst)
 {
-	t_node *head;
-	t_node *tail;
+	t_node	*head;
+	t_node	*tail;
 
 	head = lst;
 	if (!head)
-		return NULL;
+		return (NULL);
 	else if (head->next == NULL)
 		return (head);
 	tail = lst->next;
@@ -30,11 +30,11 @@ t_node *lstlast(t_node *lst)
 
 t_node	*lstnew(int number, int index)
 {
-	t_node *new_node;
-	
+	t_node	*new_node;
+
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
-		exit;
+		exit ;
 	new_node->nb = number;
 	new_node->master_index = index;
 	new_node->prev = NULL;
@@ -44,8 +44,8 @@ t_node	*lstnew(int number, int index)
 
 void	lstadd_back(t_node **lst, t_node *new)
 {
-	t_node *head;
-	t_node *tail;
+	t_node	*head;
+	t_node	*tail;
 
 	head = *lst;
 	tail = lstlast(*lst);
@@ -56,7 +56,6 @@ void	lstadd_back(t_node **lst, t_node *new)
 	tail->next = new;
 	head->prev = new;
 }
-
 
 void	lstadd_front(t_node **lst, t_node *new)
 {
@@ -74,25 +73,31 @@ void	lstadd_front(t_node **lst, t_node *new)
 	
 }
 
-
 int	lstsize(t_node *lst)
 {
-	int	i;
+	t_node	*head;
+	t_node	*tail;
+	int		i;
 
-	if (!lst)
+	head = lst;
+	if (!head)
 		return (0);
-	if (lst->next == NULL)
+	else if (head->next == NULL)
 		return (1);
-	i = 1;
-
-	
-	return (i);	
+	i = 2;
+	tail = lst->next;
+	while (tail->next != head)
+	{
+		tail = tail->next;
+		i++;
+	}
+	return (i);
 }
 
 void	free_stack(t_node *to_free)
 {
-	t_node *current;
-	t_node *next;
+	t_node	*current;
+	t_node	*next;
 	if (!to_free)
 		return ;
 	else if (!to_free->next)
