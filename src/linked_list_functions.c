@@ -6,11 +6,26 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 14:28:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:58:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_node *lst_last(t_node *lst)
+{
+	t_node *head;
+	t_node *tail;
+
+	// ! IF LIST == 1 NODE
+	if (lst->next)
+		return (lst);
+	head = lst;
+	tail = lst->next;
+	while (tail->next != head)
+		tail = tail->next;
+	return (tail);
+}
 
 t_node	*lstnew(int number, int index)
 {
@@ -30,7 +45,31 @@ void	lstadd_front(t_node **lst, t_node *new)
 {
 	if (!(*lst))
 		return ;
+	// ! EDGE CASE : if the list only got one node
+	if ((*lst)->prev == NULL)
+	{
+		new->next = *lst;
+		new->prev = *lst;
+		(*lst)->next = new;
+		(*lst)->prev = new;
+		return ;
+	}
 	
+}
+
+void	lstadd_back(t_node **lst, t_node *new)
+{
+	if (!(*lst))
+		return ;
+	// ! EDGE CASE : if the list only got one node
+	if ((*lst)->prev == NULL)
+	{
+		new->next = *lst;
+		new->prev = *lst;
+		(*lst)->next = new;
+		(*lst)->prev = new;
+		return ;
+	}
 	
 }
 
@@ -48,15 +87,7 @@ int	lstsize(t_node *lst)
 	return (i);	
 }
 
-void	lstadd_back(t_node **lst, t_node *new)
-{
-	
-}
 
-t_node	*lstlast(t_node *lst)
-{
-	
-}
 
 void	free_stack(t_node *to_free)
 {
