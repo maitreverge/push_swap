@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 18:05:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/20 10:22:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_node	*lstnew(int number, int index)
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
-		exit ;
+		return (NULL);
 	new_node->nb = number;
 	new_node->master_index = index;
 	new_node->prev = NULL;
@@ -98,6 +98,7 @@ void	free_stack(t_node *to_free)
 {
 	t_node	*current;
 	t_node	*next;
+
 	if (!to_free)
 		return ;
 	else if (!to_free->next)
@@ -112,5 +113,33 @@ void	free_stack(t_node *to_free)
 		next = current->next;
 		free(current);
 		current = next;
+	}
+}
+
+void	free_node(t_node *to_free)
+{
+	t_node	head;
+	t_node	tail;
+
+	head = *to_free;
+	tail = *lstlast(&head);
+	if (!head.next)
+	{
+		free(&to_free);
+		to_free = NULL;
+		return ;
+	}
+	else if (head.next->next == &head)
+	{
+		head = *head.next;
+		free(head.prev);
+		return ;
+	}
+	else
+	{
+		head = *head.next;
+		free(head.prev);
+		head.prev = &tail;
+		tail.next = &head;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 14:22:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/20 10:18:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ void	fill_pre_buff(char **av_copy, long *pre_buff);
 void	init_stack(int ac, char **av, t_node **a);
 
 //master_algo
-bool		not_already_sorted(t_node **a);
+bool	not_already_sorted(t_node **a);
 void	master_algo(t_node **a, t_node **b);
-
 
 // utils
 int		ft_is_space(char c);
@@ -58,7 +57,6 @@ int		ft_is_num(char *str);
 long	ft_atol(const char *str);
 void	quit(long *to_free, int exit_code);
 void	free_split(char **to_free);
-
 
 // linked_list_functions
 
@@ -68,6 +66,7 @@ void	lstadd_back(t_node **lst, t_node *new);
 t_node	*lstlast(t_node *lst);
 void	free_stack(t_node *to_free);
 int		lstsize(t_node *lst);
+void	free_node(t_node *to_free);
 
 // instruction_1
 void	sa(t_node **a, bool to_print);
@@ -81,17 +80,13 @@ void	ra(t_node **a, bool to_print);
 void	rb(t_node **b, bool to_print);
 void	rr(t_node **a, t_node **b);
 
-
 // instructions_3
 void	rra(t_node **a, bool to_print);
 void	rrb(t_node **b, bool to_print);
 void	rrr(t_node **a, t_node **b);
 
-
-
 // psh_swap
 void	print_simple(t_node *a, char *message);
 void	print_full(t_node *a, char *message);
-
 
 #endif
