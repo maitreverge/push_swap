@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/20 09:33:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 10:36:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,16 @@ int	main(int ac, char **av)
 		// print_simple(b, "\nStack B Pre-Algo\n");
 		print_full(a, "Stack A Pre-Algo\n");
 		// printf("\nLenght node = %i\n", lstsize(a));
-		// print_full(b, "Stack B Pre-Algo\n");
+		print_full(b, "Stack B Pre-Algo\n");
 		master_algo(&a, &b);
 		// print_simple(a, "\nStack A Post-Algo\n");
 		// print_simple(b, "\nStack B Post-Algo\n");
 		print_full(a, "\nStack A Post-Algo\n");
-		// print_full(b, "\nStack B Post-Algo\n");
-		free_stack(a); // ! self secured function
-		free_stack(b); // ! self secured function
+		print_full(b, "\nStack B Post-Algo\n");
+		if (a)
+			free_stack(a); // ! self secured function
+		if (b)
+			free_stack(b); // ! self secured function
 	}
 	else
 		printf("Error\n");

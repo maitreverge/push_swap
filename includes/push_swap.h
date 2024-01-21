@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/20 10:18:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 10:33:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	lstadd_back(t_node **lst, t_node *new);
 t_node	*lstlast(t_node *lst);
 void	free_stack(t_node *to_free);
 int		lstsize(t_node *lst);
-void	free_node(t_node *to_free);
+void	free_node(t_node **to_free);
 
 // instruction_1
 void	sa(t_node **a, bool to_print);

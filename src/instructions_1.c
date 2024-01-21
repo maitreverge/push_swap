@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/20 10:18:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 10:31:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	pb(t_node **a, t_node **b, bool to_print)
 		stack_b = lstnew(stack_a->nb, stack_a->master_index);
 	else
 		lstadd_front(b, lstnew(stack_a->nb, stack_a->master_index));
-	free_node(stack_a);
+	free_node(a);
 	if (to_print)
 		ft_printf("pb\n");
 }

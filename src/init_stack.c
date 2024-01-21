@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/20 09:35:40 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 10:11:27 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	init_stack(int ac, char **av, t_node **a)
 		i++;
 	fill_stack_a(pre_buff, a, i);
 	if (ac == 2)
-		free_split(av_copy); // free all split + the char **itself
+		free_split(av_copy);
 	free(pre_buff);
 }
+

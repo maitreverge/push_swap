@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/20 10:22:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 11:03:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,30 +116,32 @@ void	free_stack(t_node *to_free)
 	}
 }
 
-void	free_node(t_node *to_free)
+void	free_node(t_node **to_free)
 {
-	t_node	head;
-	t_node	tail;
+	t_node	*head;
+	t_node	*tail;
 
 	head = *to_free;
-	tail = *lstlast(&head);
-	if (!head.next)
+	tail = lstlast(*to_free);
+
+	// ! base case : one node
+	if (!head->next)
 	{
-		free(&to_free);
-		to_free = NULL;
-		return ;
+		free(head);
+		*to_free = NULL;
 	}
-	else if (head.next->next == &head)
+	else if (head->next->next == head) // ! case 2 : there is two nodes
 	{
-		head = *head.next;
-		free(head.prev);
-		return ;
+		*to_free = head->next;
+		tail->next = NULL; // tail next and prev are now null
+		tail->prev = NULL;
+		free(head); // free old head
 	}
-	else
+	else // ! 3 or mode nodes
 	{
-		head = *head.next;
-		free(head.prev);
-		head.prev = &tail;
-		tail.next = &head;
+		*to_free = head->next;
+		tail->next = *to_free;
+		tail->next->prev = tail;
+		free(head);
 	}
 }
