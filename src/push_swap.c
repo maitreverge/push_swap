@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/21 10:36:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 11:38:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int	main(int ac, char **av)
 		print_full(b, "\nStack B Post-Algo\n");
 		if (a)
 			free_stack(a); // ! self secured function
-		if (b)
-			free_stack(b); // ! self secured function
+		// if (b)
+			// free_stack(b); // ! self secured function
 	}
 	else
 		printf("Error\n");

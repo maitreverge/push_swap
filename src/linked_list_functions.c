@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/21 11:03:40 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/21 11:04:54 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void	free_node(t_node **to_free)
 	{
 		free(head);
 		*to_free = NULL;
+		to_free = NULL;
 	}
 	else if (head->next->next == head) // ! case 2 : there is two nodes
 	{
