@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:45:56 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 08:43:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:20:32 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ t_node	*lstnew(int number, int index)
 
 t_node	*lstlast(t_node *lst)
 {
-	t_node current;
+	t_node	*current;
 
 	current = lst;
 	if (!current)
 		return (0);
-	if (!current->next)	
+	if (!current->next)
 		return (current);
 	while (current->next != NULL)
 	{
@@ -42,10 +42,9 @@ t_node	*lstlast(t_node *lst)
 	return (current);
 }
 
-
 void	lstadd_back(t_node **lst, t_node *new)
 {
-	t_node *tail;
+	t_node	*tail;
 
 	tail = lstlast(*lst);
 	tail->next = new;
@@ -54,20 +53,58 @@ void	lstadd_back(t_node **lst, t_node *new)
 
 void	lstadd_front(t_node **lst, t_node *new)
 {
+	t_node	*head;
 
+	head = *lst;
+	head->prev = new;
+	new->next = head;
+	*lst = new;
 }
 
 int	lstsize(t_node *lst)
 {
+	t_node	*current;
+	int		i;
 
+	current = lst;
+	if (!current)
+		return (0);
+	else if (!current->next)
+		return (1);
+	i = 0;
+	while (current)
+	{
+		i++;
+		current = current->next;
+	}
+	return (i);
 }
 
 void	free_stack(t_node *to_free)
 {
+	t_node	*current;
 
+	current = to_free;
+	if (!current)
+		return ;
+	else if (!current->next)
+	{
+		free(current);
+		return ;
+	}
+	while (current)
+	{
+		if (!current->next)
+		{
+			free(current);
+			return ;
+		}
+		current = current->next;
+		free(current->prev);
+	}
 }
 
 void	free_node(t_node **to_free)
 {
-
+	
 }
