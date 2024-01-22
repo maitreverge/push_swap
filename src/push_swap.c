@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 09:39:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:44:45 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@ void	print_simple(t_node *a, char *message)
 	t_node *head;
 
 	head = a;
+	printf("\033[32;1m%s\033[0m\n", message);
 	if (!a)
-	{
-		printf("\nPrint function failed :stack's empty\n");
 		return ;
-	}
-	printf("%s", message);
 	do
 	{
 		printf("Node nb = %i\n", head->nb);
@@ -35,13 +32,9 @@ void	print_full(t_node *a, char *message)
 	t_node *head;
 
 	head = a;
-
+	printf("\033[32;1m%s\033[0m\n", message);
 	if (!a)
-	{
-		printf("\nPrint function failed :stack's empty\n");
 		return ;
-	}
-	printf("%s", message);
 	do
 	{
 		printf("Node adress = %p\n", head);
@@ -67,12 +60,12 @@ int	main(int ac, char **av)
 		// print_simple(a, "\nStack A Pre-Algo\n");
 		// print_simple(b, "\nStack B Pre-Algo\n");
 		print_full(a, "Stack A Pre-Algo\n");
-		printf("\nLenght node = %i\n", lstsize(a));
-		// print_full(b, "Stack B Pre-Algo\n");
-		// master_algo(&a, &b);
+		// printf("\nLenght node = %i\n", lstsize(a));
+		print_full(b, "Stack B Pre-Algo\n");
+		master_algo(&a, &b);
 		// print_simple(a, "\nStack A Post-Algo\n");
 		// print_simple(b, "\nStack B Post-Algo\n");
-		// print_full(a, "\nStack A Post-Algo\n");
+		print_full(a, "\nStack A Post-Algo\n");
 		// print_full(b, "\nStack B Post-Algo\n");
 		free_stack(a); // ! self secured function
 		free_stack(b); // ! self secured function
