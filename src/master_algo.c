@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 19:17:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 19:36:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,48 @@ void	bubble_sort(int *buffer, int len)
 	}
 }
 
-void master_index(t_node **a, int i)
+void	allocate_index(t_node **a, int *buffer, int len_a)
 {
-	t_node *head;
-	int len_a;
-	int *buffer;
+	t_node	*head;
+	int		index;
 
 	head = *a;
+	index = 0;
+	while (index < len_a)
+	{
+		if (head->nb == buffer[index])
+		{
+			head->master_index = index;
+			index++;
+		}
+		head = head->next;
+		if (!head)
+			head = *a;
+	}
+}
 
+void	master_index(t_node **a, int i)
+{
+	t_node	*head;
+	int		len_a;
+	int		*buffer;
+
+	head = *a;
 	len_a = lstsize(*a);
-
 	buffer = malloc(sizeof(int) * len_a);
 	if (!buffer)
-		exit; // secure the free with additionals free nodes
-
-	// remplir le buffer avec les chiffres
+	{
+		free_node(a);
+		exit ;
+	}
 	while (head)
 	{
 		buffer[i] = head->nb;
 		i++;
 		head = head->next;
 	}
-
 	bubble_sort(buffer, len_a);
-
-
+	allocate_index(a, buffer, len_a);
 	free(buffer);
 }
 

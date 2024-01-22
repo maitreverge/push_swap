@@ -6,7 +6,7 @@
 #    By: flverge <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/25 11:56:36 by flverge           #+#    #+#              #
-#    Updated: 2024/01/22 10:17:48 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/22 19:30:39 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = push_swap
 
 # Compiler options
-CC = gcc
+CC = cc
 
 # Valgrind flag
 CFLAGS = -Wall -Wextra -Werror -g
