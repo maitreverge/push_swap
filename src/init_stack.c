@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 13:05:22 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 18:56:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_double(long *to_check, int j)
 	return (0);
 }
 
-void	fill_stack_a(long *buffer, t_node **a, int size) // ! from long* to chained list
+void	fill_stack_a(long *buffer, t_node **a, int size)
 {
 	int	i;
 
@@ -41,9 +41,9 @@ void	fill_stack_a(long *buffer, t_node **a, int size) // ! from long* to chained
 	while (i < size)
 	{
 		if (*a == NULL)
-			*a = lstnew((int)buffer[i], 1); // ! put 0 as index
+			*a = lstnew((int)buffer[i], 0);
 		else
-			lstadd_back(a, lstnew((int)buffer[i], 21)); // ! put 0 as index
+			lstadd_back(a, lstnew((int)buffer[i], 0));
 		i++;
 	}
 }
@@ -101,4 +101,3 @@ void	init_stack(int ac, char **av, t_node **a)
 		free_split(av_copy);
 	free(pre_buff);
 }
-
