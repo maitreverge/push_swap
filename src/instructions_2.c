@@ -3,18 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 12:35:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:59:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// ! function needs to be valgrinded
 void	ra(t_node **a, bool to_print)
 {
+    t_node  *old_head;
+    t_node  *old_tail;
+
+    old_head = *a;
+    old_tail = lstlast(*a);
+
+    if (lstsize(*a) < 2)
+        return ;
+    else if (lstsize(*a) == 2)
+        sa(a, false);
+    else
+    {
+        lstadd_back(a, old_head);
+        old_tail->next = old_head;
+        old_head->prev = old_tail;
+        (*a)->next->prev = NULL;
+        (*a) = (*a)->next;
+    }
     if (to_print)
         ft_printf("ra\n");
 }
