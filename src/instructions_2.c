@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 18:29:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 18:51:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ra(t_node **a, bool to_print)
 
 	old_head = *a;
 	old_tail = lstlast(*a);
-
 	if (lstsize(*a) < 2)
 		return ;
 	else if (lstsize(*a) == 2)
@@ -42,7 +41,6 @@ void	rb(t_node **b, bool to_print)
 
 	old_head = *b;
 	old_tail = lstlast(*b);
-
 	if (lstsize(*b) < 2)
 		return ;
 	else if (lstsize(*b) == 2)
