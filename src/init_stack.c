@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/21 10:11:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 08:23:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_double(long *to_check, int j)
 	return (0);
 }
 
-void	fill_stack_a(long *buffer, t_node **a, int size)
+void	fill_stack_a(long *buffer, t_node **a, int size) // ! from long* to chained list
 {
 	int	i;
 

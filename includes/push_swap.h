@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/21 10:33:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 08:24:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ typedef struct s_node
 {
 	int				nb;
 	size_t			master_index;
-	size_t			swap;
-	size_t			sa;
-	size_t			ra;
-	size_t			rr;
-	size_t			rra;
-	size_t			rrr;
-	size_t			total_cost;
 	struct s_node	*prev;
 	struct s_node	*next;
 }			t_node;
