@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 10:45:36 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:05:22 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	fill_stack_a(long *buffer, t_node **a, int size) // ! from long* to chained
 	while (i < size)
 	{
 		if (*a == NULL)
-			*a = lstnew((int)buffer[i], 0);
+			*a = lstnew((int)buffer[i], 1); // ! put 0 as index
 		else
-			lstadd_back(a, lstnew((int)buffer[i], 0));
+			lstadd_back(a, lstnew((int)buffer[i], 21)); // ! put 0 as index
 		i++;
 	}
 }
