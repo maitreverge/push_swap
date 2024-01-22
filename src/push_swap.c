@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 10:44:45 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:07:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,14 @@ void	print_full(t_node *a, char *message)
 		printf("Node adress = %p\n", head);
 		printf("Node nb = %i\n", head->nb);
 		printf("Node index = %zu\n", head->master_index);
-		printf("Node prev = %p\n", head->prev);
-		printf("Node next = %p\n\n", head->next);
+		if (!head->prev)
+			printf("\033[1;31mNode prev = %p\n\033[0m", head->prev); // red
+		else
+			printf("Node prev = %p\n", head->prev); // green
+		if (!head->next)
+			printf("\033[1;31mNode next = %p\n\n\033[0m", head->next);
+		else
+			printf("Node next = %p\n\n", head->next);
 		head = head->next;
 	} while (head);
 }
@@ -66,7 +72,7 @@ int	main(int ac, char **av)
 		// print_simple(a, "\nStack A Post-Algo\n");
 		// print_simple(b, "\nStack B Post-Algo\n");
 		print_full(a, "\nStack A Post-Algo\n");
-		// print_full(b, "\nStack B Post-Algo\n");
+		print_full(b, "\nStack B Post-Algo\n");
 		free_stack(a); // ! self secured function
 		free_stack(b); // ! self secured function
 	}
