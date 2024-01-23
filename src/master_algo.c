@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 13:55:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:04:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,9 +164,9 @@ bool	no_num_left(t_node **a, int num, int low)
 				return false;
 			current = current->next;
 		}
-		return true;
+		// return true;
 	}
-	else if (!low)
+	else
 	{
 		while (current)
 		{
@@ -198,11 +198,12 @@ void	master_algo(t_node **a, t_node **b)
 		{
 			pb(a, b, true);
 		}
-		if ((*a)->master_index < num_lower)
+		else if ((*a)->master_index < num_lower)
 		{
 			pb(a, b, true);
 			rb(b, true);
 		}
+		// else
 		ra(a, true); //no need optimisation on the first run
 		// if (no_num_left(a, num_lower, 1))
 		// 	num_lower /= 2;
@@ -210,23 +211,29 @@ void	master_algo(t_node **a, t_node **b)
 		// 	num_upper *= 0.5;
 	}
 	num_lower /= 2;
-	num_upper *= 0.5;
+	num_upper += num_lower;
 	while (*b)
 	{
-		if ((*b)->master_index >= num_upper)
+		if ((*b)->master_index > num_upper)
 		{
 			pa(a, b, true);
 		}
-		if ((*b)->master_index < num_lower)
+		else if ((*b)->master_index < num_lower)
 		{
 			pa(a, b, true);
 			ra(a, true);
 		}
-		if (no_num_left(a, num_lower, 1))
+		else
+		{
+			rb(b, true);
+			printf("num lower = %i\n", num_lower);
+			printf("num upper = %i\n", num_upper);
+		}
+		if (no_num_left(b, num_lower, 1))
 			num_lower /= 2;
-		if (no_num_left(a, num_upper, 0))
-			num_upper *= 0.5;
-		rb(a, true);
+		else if (no_num_left(b, num_upper, 0))
+			num_upper += num_lower;
+		// 	num_upper *= 1.5;
 	}
 		// pb(a, b, true);
 	
