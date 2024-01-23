@@ -40,6 +40,18 @@ a bit of ✨norm✨
 
 😑 bro...
 
+PERFORMANCES :
+
+2 1 0 = 2 OR 3
+
+3 random values = MAX 3
+
+5 RANDOM VALUES = MAX 12
+
+100 RANDOM VALUES : MAX 700
+
+500 RANDOM VALUES : MAX 5500
+
 
 Absolute path for visualizer :
 

@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 09:56:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:55:09 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,65 +96,137 @@ void	master_index(t_node **a, int i)
 // 	return (result);
 // }
 
-size_t cost_first_node(t_node **a, t_node **b)
-{
-	t_node *head_a;
-	t_node *head_b;
-	size_t result_rb;
-	size_t result_rrb;
+// size_t cost_first_node(t_node **a, t_node **b)
+// {
+// 	t_node *head_a;
+// 	t_node *head_b;
+// 	t_node *tail_a;
+// 	t_node *tail_b;
+// 	size_t result_rb;
+// 	size_t result_rrb;
 
-	head_a = *a;
-	head_b = *b;
-	result_rb = 0;
-	result_rrb = 0;
-	if (head_a->master_index > head_b->master_index)
-		return (0);
-	else
+// 	head_a = *a;
+// 	head_b = *b;
+	
+// 	tail_a = lstlast(*a);
+// 	tail_b = lstlast(*b);
+	
+// 	result_rb = 0;
+// 	result_rrb = 0;
+	
+// 	if ((head_a->master_index > head_b->master_index)
+// 		&& (head_b->master_index > tail_b->master_index)) // biggest number at the top of stack b
+// 		return (0);
+// 	else // needs to make rra
+// 	{
+// 		while ((head_a->master_index < head_b->master_index)
+// 			&& (head_b->master_index < tail_b->master_index))
+// 		{
+// 			rb(head_b, false);
+// 			head_a = *a;
+// 			head_b = *b;
+// 			tail_a = lstlast(*a);
+// 			tail_b = lstlast(*b);
+// 			result_rb++;
+// 		}
+// 		head_a = *a;
+// 		head_b = *b;
+// 		while ((head_a->master_index < head_b->master_index)
+// 			&& (head_b->master_index < tail_b->master_index))
+// 		{
+// 			rrb(head_b, false);
+// 			head_a = *a;
+// 			head_b = *b;
+// 			tail_a = lstlast(*a);
+// 			tail_b = lstlast(*b);
+// 			result_rrb++;
+// 		}
+// 	}
+	
+// 	// pb(head_a, head_b, false);
+// 	if (result_rb < result_rrb)
+// 		return result_rb; // 1 == rb
+// 	return result_rrb; // 2 = rrb
+// 	// return (result);
+	
+// }
+
+bool	no_num_left(t_node **a, int num, int low)
+{
+	t_node *current;
+
+	current = *a;
+	if (low)
 	{
-		while (head_a->master_index < head_b->master_index)
+		while (current)
 		{
-			rb(head_b, false);
-			result_rb++;
+			if (current->master_index < num)
+				return false;
+			current = current->next;
 		}
-		head_a = *a;
-		head_b = *b;
-		while (head_a->master_index < head_b->master_index)
+		return true;
+	}
+	else if (!low)
+	{
+		while (current)
 		{
-			rrb(head_b, false);
-			result_rrb++;
+			if (current->master_index > num)
+				return false;
+			current = current->next;
 		}
 	}
-	
-	// pb(head_a, head_b, false);
-	if (result_rb < result_rrb)
-		return 1; // 1 == rb
-	return 2; // 2 = rrb
-	// return (result);
-	
+	return true;
 }
 
 void	master_algo(t_node **a, t_node **b)
 {
-	t_node *lcs;
-	size_t cost_node;
 	// ! STEP 1 : calculate the indexes
 	master_index(a, 0);
 	// ! optionnal STEP 1 : calculate the longest consecutive sequence
 	// lcs = calculate_lcs(a);
 
+	int max = lstsize(*a) - 1;
+	
+	int divider = 2;
+	
+	int num_lower = max / divider;
+	int num_upper = max / divider;
+	
 	while (*a)
 	{
-		if (!(*b))
-			pb(a, b, true);
-		cost_node = cost_first_node(a, b);
-		if (!cost_node)
-			pb(a, b, true);
-		else if (cost_node == 1) // rb
+		if ((*a)->master_index >= num_upper)
 		{
-			
+			pb(a, b, true);
 		}
-			
-		
+		if ((*a)->master_index < num_lower)
+		{
+			pb(a, b, true);
+			rb(b, true);
+		}
+		ra(a, true); //no need optimisation on the first run
+		// if (no_num_left(a, num_lower, 1))
+		// 	num_lower /= 2;
+		// if (no_num_left(a, num_upper, 0))
+		// 	num_upper *= 0.5;
+	}
+	num_lower /= 2;
+	num_upper *= 0.5;
+	while (*b)
+	{
+		if ((*b)->master_index >= num_upper)
+		{
+			pa(a, b, true);
+		}
+		if ((*b)->master_index < num_lower)
+		{
+			pa(a, b, true);
+			ra(a, true);
+		}
+		if (no_num_left(a, num_lower, 1))
+			num_lower /= 2;
+		if (no_num_left(a, num_upper, 0))
+			num_upper *= 0.5;
+		rb(a, true);
 	}
 		// pb(a, b, true);
 	
