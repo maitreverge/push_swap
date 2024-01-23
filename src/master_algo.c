@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 17:59:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/23 18:29:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ bool	calculate_low(t_node **b, int max)
 	return false;
 }
 
-void	master_algo(t_node **a, t_node **b)
+void	master_algo(t_node **a, t_node **b, int numerator)
 {
 	// ! STEP 1 : calculate the indexes
 	master_index(a, 0);
@@ -205,7 +205,7 @@ void	master_algo(t_node **a, t_node **b)
 
 	int max = lstsize(*a) - 1;
 	
-	int soustraction = max / 16;
+	int soustraction = max / numerator;
 	
 	int num_lower = soustraction;
 	int num_upper = max - soustraction;
