@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 15:04:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/23 17:59:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,24 @@ bool	no_num_left(t_node **a, int num, int low)
 	return true;
 }
 
+bool	calculate_low(t_node **b, int max)
+{
+	t_node *current;
+
+	current = *b;
+	int size = lstsize(current);
+	int i = 0;
+
+	while(i < size/2)
+	{
+		if (current->master_index == max)
+			return true;
+		i++;
+		current = current->next;
+	}
+	return false;
+}
+
 void	master_algo(t_node **a, t_node **b)
 {
 	// ! STEP 1 : calculate the indexes
@@ -187,64 +205,49 @@ void	master_algo(t_node **a, t_node **b)
 
 	int max = lstsize(*a) - 1;
 	
-	int divider = 2;
+	int soustraction = max / 16;
 	
-	int num_lower = max / divider;
-	int num_upper = max / divider;
+	int num_lower = soustraction;
+	int num_upper = max - soustraction;
+	// int num_upper = max - soustraction;
 	
 	while (*a)
 	{
-		if ((*a)->master_index >= num_upper)
+		if ((*a)->master_index > num_upper)
 		{
 			pb(a, b, true);
 		}
-		else if ((*a)->master_index < num_lower)
+		else if ((*a)->master_index <= num_lower)
 		{
 			pb(a, b, true);
 			rb(b, true);
-		}
-		// else
-		ra(a, true); //no need optimisation on the first run
-		// if (no_num_left(a, num_lower, 1))
-		// 	num_lower /= 2;
-		// if (no_num_left(a, num_upper, 0))
-		// 	num_upper *= 0.5;
-	}
-	num_lower /= 2;
-	num_upper += num_lower;
-	while (*b)
-	{
-		if ((*b)->master_index > num_upper)
-		{
-			pa(a, b, true);
-		}
-		else if ((*b)->master_index < num_lower)
-		{
-			pa(a, b, true);
-			ra(a, true);
 		}
 		else
 		{
-			rb(b, true);
-			printf("num lower = %i\n", num_lower);
-			printf("num upper = %i\n", num_upper);
+			// rr(a, b);
+			ra(a, true);
 		}
-		if (no_num_left(b, num_lower, 1))
-			num_lower /= 2;
-		else if (no_num_left(b, num_upper, 0))
-			num_upper += num_lower;
-		// 	num_upper *= 1.5;
+		if (no_num_left(a, num_lower, 1))
+			num_lower += soustraction;
+		if (no_num_left(a, num_upper, 0))
+			num_upper -= soustraction;
 	}
-		// pb(a, b, true);
 	
-	
-	// ! STEP 3 : 
-	
-	// ! STEP 
-
-	
-
-	
+	while (*b) // tri par index
+	{
+		if ((*b)->master_index == max)
+		{
+			pa(a, b, true);
+			max--;
+		}
+		else
+		{
+			if(calculate_low(b, max))
+				rb(b, true);
+			else
+				rrb(b, true);
+		}
+	}
 }
 
 // ! Calculer le cout total du premier element, et regarder a cout + 1 MAX au debut et a la fin
