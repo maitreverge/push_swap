@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 17:26:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:31:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	selection_sort(t_node **a, t_node **b)
 	int	var_rra;
 
 	size = lstsize(*a);
-	while (size > 1)
+	// while (size > 1)
 	while (*a)
 	{
 		size = lstsize(*a);
