@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 08:47:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:17:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	fill_stack_a(long *buffer, t_node **a, int size)
 	int	i;
 
 	i = 0;
+	// while (i <= size)
 	while (i < size)
 	{
 		if (*a == NULL)
@@ -74,8 +75,8 @@ void	fill_pre_buff(char **av_copy, long *pre_buff)
 		if ((cur_nb < INT_MIN || cur_nb > INT_MAX))
 			quit(pre_buff, -1);
 		pre_buff[j] = cur_nb;
-		if (check_double(pre_buff, j))
-			quit(pre_buff, -1);
+		// if (check_double(pre_buff, j))
+			// quit(pre_buff, -1);
 		j++;
 		av_copy++;
 	}
@@ -107,6 +108,16 @@ bool	a_is_sorted(t_node **a)
 	// false = is not sorted
 }
 
+bool	a_no_double(t_node **a)
+{
+	t_node *current;
+
+	current = *a;
+
+	// true = no double 
+	// false = double 
+}
+
 void	init_stack(int ac, char **av, t_node **a)
 {
 	char	**av_copy;
@@ -127,7 +138,7 @@ void	init_stack(int ac, char **av, t_node **a)
 		free_split(av_copy);
 	free(pre_buff);
 	// ! check is node is sorted
-	if (a_is_sorted(a))
+	if (a_is_sorted(a) || a_no_double(a))
 	{
 		free_stack(*a);
 		exit (-1);
