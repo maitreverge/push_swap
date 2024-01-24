@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 16:13:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:33:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,44 +127,49 @@ bool	calculate_low(t_node **b, int max)
 	return (false);
 }
 
+t_algo	init_extra_struct(t_node **a, int numerator)
+{
+	t_algo	new;
+
+	new.max = lstsize(*a) - 1;
+	new.soustraction = new.max / numerator;
+	new.num_lower = new.soustraction;
+	new.num_upper = new.max - new.soustraction;
+	return (new);
+}
+
 void	master_algo(t_node **a, t_node **b, int numerator)
 {
-	int	soustraction;
-	int	num_lower;
-	int	num_upper;
-	int	max;
+	t_algo	algo;
 
-	soustraction = max / numerator;
-	num_lower = soustraction;
-	num_upper = max - soustraction;
-	max = lstsize(*a) - 1;
+	algo = init_extra_struct(a, numerator);
 	master_index(a, 0);
 	while (*a)
 	{
-		if ((*a)->master_index > num_upper)
+		if ((*a)->master_index > algo.num_upper)
 			pb(a, b, true);
-		else if ((*a)->master_index <= num_lower)
+		else if ((*a)->master_index <= algo.num_lower)
 		{
 			pb(a, b, true);
 			rb(b, true);
 		}
 		else
 			ra(a, true);
-		if (no_num_left(a, num_lower, 1))
-			num_lower += soustraction;
-		if (no_num_left(a, num_upper, 0))
-			num_upper -= soustraction;
+		if (no_num_left(a, algo.num_lower, 1))
+			algo.num_lower += algo.soustraction;
+		if (no_num_left(a, algo.num_upper, 0))
+			algo.num_upper -= algo.soustraction;
 	}
 	while (*b)
 	{
-		if ((*b)->master_index == max)
+		if ((*b)->master_index == algo.max)
 		{
 			pa(a, b, true);
-			max--;
+			algo.max--;
 		}
 		else
 		{
-			if (calculate_low(b, max))
+			if (calculate_low(b, algo.max))
 				rb(b, true);
 			else
 				rrb(b, true);

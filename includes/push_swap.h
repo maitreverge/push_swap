@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 13:18:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:28:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 }			t_node;
+
+typedef struct s_algo
+{
+	int	max;
+	int	soustraction;
+	int	num_lower;
+	int	num_upper;
+}			t_algo;
 
 // arg_parsing
 int		check_arg(int ac, char **av);
