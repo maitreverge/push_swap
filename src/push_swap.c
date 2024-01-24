@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 08:50:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:46:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,29 +52,83 @@ void	print_full(t_node *a, char *message)
 	} while (head);
 }
 
+int	find_min(t_node **a)
+{
+	int result;
+
+	result = INT_MAX;
+	t_node *current;
+
+	current = *a;
+	while (current)
+	{
+		if (current->nb <= result)
+			result = current->nb;
+		current = current->next;
+	}
+	return result;
+}
+
+int	find_max(t_node **a)
+{
+	int result;
+
+	result = INT_MIN;
+	t_node *current;
+
+	current = *a;
+	while (current)
+	{
+		if (current->nb >= result)
+			result = current->nb;
+		current = current->next;
+	}
+	return result;
+}
+
+int find_middle(t_node **a, int min, int max)
+{
+	int result;
+
+	result = 0;
+	t_node *current;
+
+	current = *a;
+	while (current)
+	{
+		if (current->nb != min && current->nb != max)
+			result = current->nb;
+		current = current->next;
+	}
+	return result;
+}
+
 void	sort_3(t_node **a)
 {
 	t_node *current;
-	int nb1;
-	int nb2;
-	int nb3;
+	int min;
+	int middle;
+	int max;
 
 	current = *a;
-	nb1 = current->nb;
-	nb2 = current->next->nb;
-	nb3 = current->next->next->nb;
-	if (nb1 < nb3 && nb3 < nb2) // 1 3 2 sa ra
+	min = find_min(a);
+	max = find_max(a);
+	middle = find_middle(a, min, max);
+	printf("Min = %i\n, Max = %i\n, Middle = %i\n", min, max, middle);
+	// if (min == current->nb && max == current->next->next->nb) // 1 2 3 already sorted
+		// return;
+	if (min == current->nb) // 1 3 2 sa
+		sa(a, true);
+	else if (middle == current->nb && min == current->next->nb) // 2 1 3 rra
+		rra(a, true);
+	else if (middle == current->nb && max == current->next->nb) // 2 3 1 sa ra
 	{
 		sa(a, true);
 		ra(a, true);
 	}
-	else if (nb2 < nb1 && nb1 < nb3) // 2 1 3 sa
-		sa(a, true);
-	else if (nb2 < nb3 && nb3 < nb1) // 2 3 1 rra
-		rra(a, true);
-	else if (nb3 < nb1 && nb1 < nb2) // 3 1 2 ra
+	else if (max == current->nb && min == current->next->nb) // 3 1 2 ra
 		ra(a, true);
-	else if (nb3 < nb2 && nb2 < nb1) // 3 2 1 sa rra
+	else if (max == current->nb && middle == current->next->nb) // 3 2 1 sa rra
 	{
 		sa(a, true);
 		rra(a, true);
@@ -105,7 +159,9 @@ int	main(int ac, char **av)
 	if (!check_arg(ac, av))
 	{
 		init_stack(ac, av, &a);
+		// something wrong here 
 		size = lstsize(a);
+		printf("Size = %i", size);
 		if (size < 10)
 			little_algos(&a, &b, size);
 		else if (size < 150)
@@ -114,7 +170,7 @@ int	main(int ac, char **av)
 			master_algo(&a, &b, 20);
 		// print_simple(a, "\nStack A Pre-Algo\n");
 		// print_simple(b, "\nStack B Pre-Algo\n");
-		print_full(a, "Stack A Pre-Algo\n");
+		// print_full(a, "Stack A Pre-Algo\n");
 		// printf("\nLenght node = %i\n", lstsize(a));
 		// print_full(b, "Stack B Pre-Algo\n");
 		// print_simple(a, "\nStack A Post-Algo\n");

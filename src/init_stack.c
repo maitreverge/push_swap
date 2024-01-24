@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 09:17:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:36:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,28 @@ bool	a_is_sorted(t_node **a)
 	// false = is not sorted
 }
 
-bool	a_no_double(t_node **a)
+bool	a_double(t_node **a)
 {
 	t_node *current;
+	t_node *following_node;;
 
 	current = *a;
+	
+	while (current)
+	{
+		following_node = current->next;
+		while (following_node)
+		{
+			if (current->nb == following_node->nb)
+				return true;
+			following_node = following_node->next;
+		}
+		current = current->next;
+	}
+	return false;
 
-	// true = no double 
-	// false = double 
+	// true =  double 
+	// false =  no double 
 }
 
 void	init_stack(int ac, char **av, t_node **a)
@@ -137,8 +151,7 @@ void	init_stack(int ac, char **av, t_node **a)
 	if (ac == 2)
 		free_split(av_copy);
 	free(pre_buff);
-	// ! check is node is sorted
-	if (a_is_sorted(a) || a_no_double(a))
+	if (a_is_sorted(a) || a_double(a))
 	{
 		free_stack(*a);
 		exit (-1);
