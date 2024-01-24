@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   init_stack_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 16:04:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:19:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h" 
+#include "../includes/push_swap.h"
 
-int	check_double(long *to_check, int j)
-{
-	int	i;
-	int	k;
-
-	i = 0;
-	k = 1;
-	while (i < j)
-	{
-		if (to_check[i] == to_check[k])
-			return (1);
-		k++;
-		if (k > j)
-		{
-			i++;
-			k = i + 1;
-		}
-	}
-	return (0);
-}
-
-void	fill_stack_a(long *buffer, t_node **a, int size)
+static void	fill_stack_a(long *buffer, t_node **a, int size)
 {
 	int	i;
 
@@ -48,7 +27,7 @@ void	fill_stack_a(long *buffer, t_node **a, int size)
 	}
 }
 
-long	*init_pre_buff(char **av_copy)
+static long	*init_pre_buff(char **av_copy)
 {
 	long	*pre_buff;
 	int		i;
@@ -62,7 +41,7 @@ long	*init_pre_buff(char **av_copy)
 	return (pre_buff);
 }
 
-void	fill_pre_buff(char **av_copy, long *pre_buff)
+static void	fill_pre_buff(char **av_copy, long *pre_buff)
 {
 	long	cur_nb;
 	int		j;
@@ -77,42 +56,6 @@ void	fill_pre_buff(char **av_copy, long *pre_buff)
 		j++;
 		av_copy++;
 	}
-}
-
-bool	a_is_sorted(t_node **a)
-{
-	t_node	*current;
-
-	current = *a;
-	if (!current->next)
-		return (true);
-	while (current->next)
-	{
-		if (current->nb > current->next->nb)
-			return (false);
-		current = current->next;
-	}
-	return (true);
-}
-
-bool	a_contains_double(t_node **a)
-{
-	t_node	*current;
-	t_node	*following_node;
-
-	current = *a;
-	while (current)
-	{
-		following_node = current->next;
-		while (following_node)
-		{
-			if (current->nb == following_node->nb)
-				return (true);
-			following_node = following_node->next;
-		}
-		current = current->next;
-	}
-	return (false);
 }
 
 void	init_stack(int ac, char **av, t_node **a)

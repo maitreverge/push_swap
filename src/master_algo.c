@@ -6,57 +6,24 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 16:59:17 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:25:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	bubble_sort(int *buffer, int len)
+static t_algo	init_struct_algo(t_node **a, int numerator)
 {
-	int	i;
-	int	j;
-	int	temp;
+	t_algo	new;
 
-	i = 0;
-	while (i < len - 1)
-	{
-		j = 0;
-		while (j < len - i - 1)
-		{
-			if (buffer[j] > buffer[j + 1])
-			{
-				temp = buffer[j];
-				buffer[j] = buffer[j + 1];
-				buffer[j + 1] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
+	new.max = lstsize(*a) - 1;
+	new.soustraction = new.max / numerator;
+	new.num_lower = new.soustraction;
+	new.num_upper = new.max - new.soustraction;
+	return (new);
 }
 
-void	allocate_index(t_node **a, int *buffer, int len_a)
-{
-	t_node	*head;
-	int		index;
-
-	head = *a;
-	index = 0;
-	while (index < len_a)
-	{
-		if (head->nb == buffer[index])
-		{
-			head->master_index = index;
-			index++;
-		}
-		head = head->next;
-		if (!head)
-			head = *a;
-	}
-}
-
-void	master_index(t_node **a, int i)
+static void	master_index(t_node **a, int i)
 {
 	t_node	*head;
 	int		len_a;
@@ -81,64 +48,7 @@ void	master_index(t_node **a, int i)
 	free(buffer);
 }
 
-bool	no_num_left(t_node **a, int num, int low)
-{
-	t_node	*current;
-
-	current = *a;
-	if (low)
-	{
-		while (current)
-		{
-			if (current->master_index < num)
-				return (false);
-			current = current->next;
-		}
-	}
-	else
-	{
-		while (current)
-		{
-			if (current->master_index > num)
-				return (false);
-			current = current->next;
-		}
-	}
-	return (true);
-}
-
-bool	calculate_low(t_node **b, int max)
-{
-	t_node	*current;
-	int		size;
-	int		i;
-
-	current = *b;
-	size = lstsize(current);
-	i = 0;
-
-	while (i < size / 2)
-	{
-		if (current->master_index == max)
-			return (true);
-		i++;
-		current = current->next;
-	}
-	return (false);
-}
-
-t_algo	init_struct_algo(t_node **a, int numerator)
-{
-	t_algo	new;
-
-	new.max = lstsize(*a) - 1;
-	new.soustraction = new.max / numerator;
-	new.num_lower = new.soustraction;
-	new.num_upper = new.max - new.soustraction;
-	return (new);
-}
-
-void	sub_algo(t_node **a, t_node **b, t_algo *algo)
+static void	sub_algo(t_node **a, t_node **b, t_algo *algo)
 {
 	while (*b)
 	{

@@ -1,16 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_parsing.c                                      :+:      :+:    :+:   */
+/*   secu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 16:01:44 by flverge          ###   ########.fr       */
+/*   Created: 2024/01/24 18:15:53 by flverge           #+#    #+#             */
+/*   Updated: 2024/01/24 18:28:26 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h" 
+#include "../includes/push_swap.h"
+
+bool	a_is_sorted(t_node **a)
+{
+	t_node	*current;
+
+	current = *a;
+	if (!current->next)
+		return (true);
+	while (current->next)
+	{
+		if (current->nb > current->next->nb)
+			return (false);
+		current = current->next;
+	}
+	return (true);
+}
+
+bool	a_contains_double(t_node **a)
+{
+	t_node	*current;
+	t_node	*following_node;
+
+	current = *a;
+	while (current)
+	{
+		following_node = current->next;
+		while (following_node)
+		{
+			if (current->nb == following_node->nb)
+				return (true);
+			following_node = following_node->next;
+		}
+		current = current->next;
+	}
+	return (false);
+}
 
 /**
  * @brief Make sure that every arg is a number
