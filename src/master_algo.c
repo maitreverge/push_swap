@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 18:29:40 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 13:20:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ void	master_algo(t_node **a, t_node **b, int numerator)
 	// ! optionnal STEP 1 : calculate the longest consecutive sequence
 	// lcs = calculate_lcs(a);
 
+	int size;
 	int max = lstsize(*a) - 1;
 	
 	int soustraction = max / numerator;
@@ -213,6 +214,12 @@ void	master_algo(t_node **a, t_node **b, int numerator)
 	
 	while (*a)
 	{
+		// size = lstsize(*a);
+		// if (size == 1)
+		// {
+		// 	// sort_3(a);
+		// 	break ;
+		// }
 		if ((*a)->master_index > num_upper)
 		{
 			pb(a, b, true);
