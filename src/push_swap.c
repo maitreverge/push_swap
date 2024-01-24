@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 10:50:31 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:16:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	sort_3(t_node **a)
 	min = find_min(a);
 	max = find_max(a);
 	middle = find_middle(a, min, max);
-	printf("Min = %i\n, Max = %i\n, Middle = %i\n", min, max, middle);
+	// printf("Min = %i\n, Max = %i\n, Middle = %i\n", min, max, middle);
 	// if (min == current->nb && max == current->next->next->nb) // 1 2 3 already sorted
 		// return;
 	if (min == current->nb) // 1 3 2 sa
@@ -162,9 +162,9 @@ int	main(int ac, char **av)
 		// 	printf("Current av = %s\n", av[i]);
 		init_stack(ac, av, &a);
 		// something wrong here 
-		print_simple(a, "\nStack A Pre-Algo\n");
+		// print_simple(a, "\nStack A Pre-Algo\n");
 		size = lstsize(a);
-		printf("Size = %i", size);
+		// printf("Size = %i", size);
 		if (size < 10)
 			little_algos(&a, &b, size);
 		else if (size < 150)
