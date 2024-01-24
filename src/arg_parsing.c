@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:30:50 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/19 13:46:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 08:34:21 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	check_arg(int ac, char **av)
 
 	i = 1;
 	if (ac == 1)
-		return (i);
+	{
+		exit (1);
+		// return (i);
+	}
 	while (i < ac)
 	{
 		if (ft_is_num(av[i]))

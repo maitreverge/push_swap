@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 18:53:42 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 08:50:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ int	main(int ac, char **av)
 		if (size < 10)
 			little_algos(&a, &b, size);
 		else if (size < 150)
-			master_algo(&a, &b, 10);
+			master_algo(&a, &b, 3);
 		else
-			master_algo(&a, &b, 10);
+			master_algo(&a, &b, 20);
 		// print_simple(a, "\nStack A Pre-Algo\n");
 		// print_simple(b, "\nStack B Pre-Algo\n");
-		// print_full(a, "Stack A Pre-Algo\n");
+		print_full(a, "Stack A Pre-Algo\n");
 		// printf("\nLenght node = %i\n", lstsize(a));
 		// print_full(b, "Stack B Pre-Algo\n");
 		// print_simple(a, "\nStack A Post-Algo\n");

@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 18:56:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 08:47:54 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,32 @@ void	fill_pre_buff(char **av_copy, long *pre_buff)
 	}
 }
 
+bool	a_is_sorted(t_node **a)
+{
+	t_node *current;
+
+	// bool result;
+
+	// result = true;
+	current = *a;
+
+	if (!current->next)
+		return true;
+	while (current->next->next)
+	{
+		if (current->nb > current->next->nb)
+			return (false);
+		current = current->next;
+	}
+
+	return (true);
+
+	
+
+	// true = is sorted
+	// false = is not sorted
+}
+
 void	init_stack(int ac, char **av, t_node **a)
 {
 	char	**av_copy;
@@ -100,4 +126,10 @@ void	init_stack(int ac, char **av, t_node **a)
 	if (ac == 2)
 		free_split(av_copy);
 	free(pre_buff);
+	// ! check is node is sorted
+	if (a_is_sorted(a))
+	{
+		free_stack(*a);
+		exit (-1);
+	}
 }
