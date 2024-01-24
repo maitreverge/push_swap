@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 18:27:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:39:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ int	main(int ac, char **av)
 		free_stack(b);
 	}
 	else
-		printf("Error\n");
+		ft_printf("Error\n");
 }
