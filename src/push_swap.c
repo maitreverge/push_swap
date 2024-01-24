@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 11:16:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:28:38 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,75 @@ void	sort_3(t_node **a)
 	}
 }
 
+int	test_ra(t_node **a, int min)
+{
+	t_node *current;
+	int result = 1;
+
+	current = (*a)->next;
+	while (current)
+	{
+		if (current->nb == min)
+			break ;
+		result++;
+		current = current->next;
+	}
+	// Return the smaller of i and (size - i)
+	return (result);
+}
+
+int	test_rra(t_node **a, int min)
+{
+	t_node *current;
+	int result = 1;
+
+	current = lstlast(*a);
+	while (current)
+	{
+		if (current->nb == min)
+			break ;
+		result++;
+		current = current->prev;
+	}
+	// Return the smaller of i and (size - i)
+	return (result);
+}
+
+void	selection_sort(t_node **a, t_node **b)
+{
+	int min;
+	int size;
+	int var_ra;
+	int var_rra;
+
+	size = lstsize(*a);
+	while (size > 1)  // Stop when there's only one element left in stack a
+	{
+		if (size == 3)
+		{
+			sort_3(a);
+			break;
+		}
+		min = find_min(a);
+		if ((*a)->nb == min)
+		{
+			pb(a, b, true);
+			size--;
+		}
+		else
+		{
+			var_ra = test_ra(a, min); 
+			var_rra = test_rra(a, min); 
+			if (var_ra <= var_rra)
+				ra(a, true);
+			else
+				rra(a, true);
+		}
+	}
+	while (*b)
+		pa(a, b, true);
+}
+
 void	little_algos(t_node **a, t_node **b, int size)
 {
 	if (size == 2)
@@ -144,6 +213,8 @@ void	little_algos(t_node **a, t_node **b, int size)
 	}
 	else if (size == 3)
 		sort_3(a);
+	else
+		selection_sort(a, b);
 	
 }
 

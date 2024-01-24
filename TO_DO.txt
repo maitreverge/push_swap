@@ -61,3 +61,26 @@ Absolute path for visualizer :
 
 
 ADD DYOXYGEN COMMENT ON EACH FUNCTION
+
+
+
+
+
+./push_swap -33257 -33918 24086 64763 -52200
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+pa
+pa
+pa
+pa
+
+15 instructions
