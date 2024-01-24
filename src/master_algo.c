@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 13:20:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:13:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,79 +81,9 @@ void	master_index(t_node **a, int i)
 	free(buffer);
 }
 
-// t_node *calculate_lcs(t_node **a)
-// {
-// 	t_node *current;
-// 	t_node *result;
-
-// 	current = *a;
-// 	result = *a;
-
-// 	while (current)
-// 	{
-// 		if 
-// 	}
-// 	return (result);
-// }
-
-// size_t cost_first_node(t_node **a, t_node **b)
-// {
-// 	t_node *head_a;
-// 	t_node *head_b;
-// 	t_node *tail_a;
-// 	t_node *tail_b;
-// 	size_t result_rb;
-// 	size_t result_rrb;
-
-// 	head_a = *a;
-// 	head_b = *b;
-	
-// 	tail_a = lstlast(*a);
-// 	tail_b = lstlast(*b);
-	
-// 	result_rb = 0;
-// 	result_rrb = 0;
-	
-// 	if ((head_a->master_index > head_b->master_index)
-// 		&& (head_b->master_index > tail_b->master_index)) // biggest number at the top of stack b
-// 		return (0);
-// 	else // needs to make rra
-// 	{
-// 		while ((head_a->master_index < head_b->master_index)
-// 			&& (head_b->master_index < tail_b->master_index))
-// 		{
-// 			rb(head_b, false);
-// 			head_a = *a;
-// 			head_b = *b;
-// 			tail_a = lstlast(*a);
-// 			tail_b = lstlast(*b);
-// 			result_rb++;
-// 		}
-// 		head_a = *a;
-// 		head_b = *b;
-// 		while ((head_a->master_index < head_b->master_index)
-// 			&& (head_b->master_index < tail_b->master_index))
-// 		{
-// 			rrb(head_b, false);
-// 			head_a = *a;
-// 			head_b = *b;
-// 			tail_a = lstlast(*a);
-// 			tail_b = lstlast(*b);
-// 			result_rrb++;
-// 		}
-// 	}
-	
-// 	// pb(head_a, head_b, false);
-// 	if (result_rb < result_rrb)
-// 		return result_rb; // 1 == rb
-// 	return result_rrb; // 2 = rrb
-// 	// return (result);
-	
-// }
-
 bool	no_num_left(t_node **a, int num, int low)
 {
-	t_node *current;
+	t_node	*current;
 
 	current = *a;
 	if (low)
@@ -161,86 +91,71 @@ bool	no_num_left(t_node **a, int num, int low)
 		while (current)
 		{
 			if (current->master_index < num)
-				return false;
+				return (false);
 			current = current->next;
 		}
-		// return true;
 	}
 	else
 	{
 		while (current)
 		{
 			if (current->master_index > num)
-				return false;
+				return (false);
 			current = current->next;
 		}
 	}
-	return true;
+	return (true);
 }
 
 bool	calculate_low(t_node **b, int max)
 {
-	t_node *current;
+	t_node	*current;
+	int		size;
+	int		i;
 
 	current = *b;
-	int size = lstsize(current);
-	int i = 0;
+	size = lstsize(current);
+	i = 0;
 
-	while(i < size/2)
+	while (i < size / 2)
 	{
 		if (current->master_index == max)
-			return true;
+			return (true);
 		i++;
 		current = current->next;
 	}
-	return false;
+	return (false);
 }
 
 void	master_algo(t_node **a, t_node **b, int numerator)
 {
-	// ! STEP 1 : calculate the indexes
-	master_index(a, 0);
-	// ! optionnal STEP 1 : calculate the longest consecutive sequence
-	// lcs = calculate_lcs(a);
+	int	soustraction;
+	int	num_lower;
+	int	num_upper;
+	int	max;
 
-	int size;
-	int max = lstsize(*a) - 1;
-	
-	int soustraction = max / numerator;
-	
-	int num_lower = soustraction;
-	int num_upper = max - soustraction;
-	// int num_upper = max - soustraction;
-	
+	soustraction = max / numerator;
+	num_lower = soustraction;
+	num_upper = max - soustraction;
+	max = lstsize(*a) - 1;
+	master_index(a, 0);
 	while (*a)
 	{
-		// size = lstsize(*a);
-		// if (size == 1)
-		// {
-		// 	// sort_3(a);
-		// 	break ;
-		// }
 		if ((*a)->master_index > num_upper)
-		{
 			pb(a, b, true);
-		}
 		else if ((*a)->master_index <= num_lower)
 		{
 			pb(a, b, true);
 			rb(b, true);
 		}
 		else
-		{
-			// rr(a, b);
 			ra(a, true);
-		}
 		if (no_num_left(a, num_lower, 1))
 			num_lower += soustraction;
 		if (no_num_left(a, num_upper, 0))
 			num_upper -= soustraction;
 	}
-	
-	while (*b) // tri par index
+	while (*b)
 	{
 		if ((*b)->master_index == max)
 		{
@@ -249,12 +164,10 @@ void	master_algo(t_node **a, t_node **b, int numerator)
 		}
 		else
 		{
-			if(calculate_low(b, max))
+			if (calculate_low(b, max))
 				rb(b, true);
 			else
 				rrb(b, true);
 		}
 	}
 }
-
-// ! Calculer le cout total du premier element, et regarder a cout + 1 MAX au debut et a la fin

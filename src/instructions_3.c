@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:27 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/22 18:52:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:05:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,3 @@ void	rrr(t_node **a, t_node **b)
 	rrb(b, false);
 	ft_printf("rrr\n");
 }
-
-/*
-
-!rra (reverse rotate a): 
-Shift down all elements of stack a by 1. The last element becomes the first one.
-
-!rrb (reverse rotate b):
-Shift down all elements of stack b by 1. The last element becomes the first one.
-
-!rrr :
-rra and rrb at the same time.
-
-*/
