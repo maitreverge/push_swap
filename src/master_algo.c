@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:25:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 16:33:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:59:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ bool	calculate_low(t_node **b, int max)
 	return (false);
 }
 
-t_algo	init_extra_struct(t_node **a, int numerator)
+t_algo	init_struct_algo(t_node **a, int numerator)
 {
 	t_algo	new;
 
@@ -138,11 +138,30 @@ t_algo	init_extra_struct(t_node **a, int numerator)
 	return (new);
 }
 
+void	sub_algo(t_node **a, t_node **b, t_algo *algo)
+{
+	while (*b)
+	{
+		if ((*b)->master_index == algo->max)
+		{
+			pa(a, b, true);
+			algo->max--;
+		}
+		else
+		{
+			if (calculate_low(b, algo->max))
+				rb(b, true);
+			else
+				rrb(b, true);
+		}
+	}
+}
+
 void	master_algo(t_node **a, t_node **b, int numerator)
 {
 	t_algo	algo;
 
-	algo = init_extra_struct(a, numerator);
+	algo = init_struct_algo(a, numerator);
 	master_index(a, 0);
 	while (*a)
 	{
@@ -160,19 +179,5 @@ void	master_algo(t_node **a, t_node **b, int numerator)
 		if (no_num_left(a, algo.num_upper, 0))
 			algo.num_upper -= algo.soustraction;
 	}
-	while (*b)
-	{
-		if ((*b)->master_index == algo.max)
-		{
-			pa(a, b, true);
-			algo.max--;
-		}
-		else
-		{
-			if (calculate_low(b, algo.max))
-				rb(b, true);
-			else
-				rrb(b, true);
-		}
-	}
+	sub_algo(a, b, &algo);
 }
