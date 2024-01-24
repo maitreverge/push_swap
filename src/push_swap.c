@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 17:02:01 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:26:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,43 @@ void	sort_3(t_node **a)
 	}
 }
 
+void	reverse_sort_3(t_node **a)
+{
+	t_node	*current;
+	int		min;
+	int		middle;
+	int		max;
+
+	current = *a;
+	min = find_min(a);
+	max = find_max(a);
+	middle = find_middle(a, min, max);
+	if (min == current->nb && middle == current->next->nb) // 1 2 3
+	{
+		sa(a, true);
+		rra(a, true);
+	}
+	else if (min == current->nb) // 1 3 2
+	{
+		// sa(a, true);
+		ra(a, true);
+	}
+	else if (middle == current->nb && min == current->next->nb) // 2 1 3
+		rra(a, true);
+	else if (middle == current->nb && max == current->next->nb) // 2 3 1
+		sa(a, true);
+	else if (max == current->nb && min == current->next->nb) // 3 1 2
+	{
+		sa(a, true); // 1 3 2
+		ra(a, true); // 3 2 1
+	}
+	// else if (max == current->nb && middle == current->next->nb) // 3 2 1
+	// {
+	// 	sa(a, true);
+	// 	rra(a, true);
+	// }
+}
+
 int	test_ra(t_node **a, int min)
 {
 	t_node	*current;
@@ -132,10 +169,13 @@ void	selection_sort(t_node **a, t_node **b)
 
 	size = lstsize(*a);
 	while (size > 1)
+	while (*a)
 	{
+		size = lstsize(*a);
 		if (size == 3)
 		{
-			sort_3(a); // maybe need a reverse sorting
+			// reverse_sort_3(a);
+			sort_3(a);
 			break ;
 		}
 		min = find_min(a);
