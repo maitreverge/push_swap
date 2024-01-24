@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/23 18:35:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:48:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ t_node	*lstlast(t_node *lst);
 void	free_stack(t_node *to_free);
 int		lstsize(t_node *lst);
 void	free_node(t_node **to_free);
+
+// necessaire
+bool	a_contains_double(t_node **a);
+bool	a_is_sorted(t_node **a);
+
 
 // instruction_1
 void	sa(t_node **a, bool to_print);

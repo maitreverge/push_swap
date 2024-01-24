@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 11:15:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:52:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,18 +157,18 @@ void	init_stack(int ac, char **av, t_node **a)
 	if (ac == 2)
 		free_split(av_copy);
 	free(pre_buff);
-	if (a_contains_double(a))
-	{
-		// printf("A contain double\n");
-		ft_printf("Error\n");
-		free_stack(*a);
-		exit (-1);
-	}
-	if (a_is_sorted(a))
-	{
-		// printf("A is sorted\n");
-		free_stack(*a);
-		exit (-1);
-	}
+	// if (a_contains_double(a))
+	// {
+	// 	// printf("A contain double\n");
+	// 	ft_printf("Error\n");
+	// 	free_stack(*a);
+	// 	exit (-1);
+	// }
+	// if (a_is_sorted(a))
+	// {
+	// 	// printf("A is sorted\n");
+	// 	free_stack(*a);
+	// 	exit (-1);
+	// }
 	// print_full(*a, "print check");
 }

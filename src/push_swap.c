@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 12:28:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 13:04:32 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,18 +114,15 @@ void	sort_3(t_node **a)
 	min = find_min(a);
 	max = find_max(a);
 	middle = find_middle(a, min, max);
-	// printf("Min = %i\n, Max = %i\n, Middle = %i\n", min, max, middle);
-	// if (min == current->nb && max == current->next->next->nb) // 1 2 3 already sorted
-		// return;
-	if (min == current->nb) // 1 3 2 sa
-		sa(a, true);
-	else if (middle == current->nb && min == current->next->nb) // 2 1 3 rra
-		rra(a, true);
-	else if (middle == current->nb && max == current->next->nb) // 2 3 1 sa ra
+	if (min == current->nb) // 1 3 2 sa ra
 	{
 		sa(a, true);
 		ra(a, true);
 	}
+	else if (middle == current->nb && min == current->next->nb) // 2 1 3 sa
+		sa(a, true);
+	else if (middle == current->nb && max == current->next->nb) // 2 3 1 rra
+		rra(a, true);
 	else if (max == current->nb && min == current->next->nb) // 3 1 2 ra
 		ra(a, true);
 	else if (max == current->nb && middle == current->next->nb) // 3 2 1 sa rra
@@ -217,6 +214,13 @@ void	little_algos(t_node **a, t_node **b, int size)
 		selection_sort(a, b);
 	
 }
+void	quit_check(t_node **a, char *str)
+{
+	free_stack(*a);
+	if (str)
+		ft_printf("%s", str);
+	exit (-1);
+}
 
 int	main(int ac, char **av)
 {
@@ -232,6 +236,10 @@ int	main(int ac, char **av)
 		// for(int i = 0; av[i]; i++)
 		// 	printf("Current av = %s\n", av[i]);
 		init_stack(ac, av, &a);
+		if (a_is_sorted(&a))
+			quit_check(&a, 0);
+		if (a_contains_double(&a))
+			quit_check(&a, "Error\n");
 		// something wrong here 
 		// print_simple(a, "\nStack A Pre-Algo\n");
 		size = lstsize(a);
