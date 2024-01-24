@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:25:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 09:36:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:14:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ long	*init_pre_buff(char **av_copy)
 	i = 0;
 	while (av_copy[i] != NULL)
 		i++;
+	// printf("index init prefbuff = %i\n", i);
 	pre_buff = malloc(sizeof(long) * i);
 	if (!pre_buff)
 		exit(-1);
@@ -77,6 +78,7 @@ void	fill_pre_buff(char **av_copy, long *pre_buff)
 		pre_buff[j] = cur_nb;
 		// if (check_double(pre_buff, j))
 			// quit(pre_buff, -1);
+		// printf("Current buffer location = %i\n", pre_buff[j]);
 		j++;
 		av_copy++;
 	}
@@ -93,7 +95,7 @@ bool	a_is_sorted(t_node **a)
 
 	if (!current->next)
 		return true;
-	while (current->next->next)
+	while (current->next)
 	{
 		if (current->nb > current->next->nb)
 			return (false);
@@ -108,7 +110,7 @@ bool	a_is_sorted(t_node **a)
 	// false = is not sorted
 }
 
-bool	a_double(t_node **a)
+bool	a_contains_double(t_node **a)
 {
 	t_node *current;
 	t_node *following_node;;
@@ -127,9 +129,6 @@ bool	a_double(t_node **a)
 		current = current->next;
 	}
 	return false;
-
-	// true =  double 
-	// false =  no double 
 }
 
 void	init_stack(int ac, char **av, t_node **a)
@@ -142,18 +141,34 @@ void	init_stack(int ac, char **av, t_node **a)
 		av_copy = ft_split(av[1], ' ');
 	else
 		av_copy = &av[1];
-	pre_buff = init_pre_buff(av_copy);
-	fill_pre_buff(av_copy, pre_buff);
+	
+	pre_buff = init_pre_buff(av_copy); // ok
+	
+	fill_pre_buff(av_copy, pre_buff); // ok
+	// !!!!!!!!!!!!!!! CHECKER
+	// for(int i = 0; i < 3; i++)
+	// 		printf("Current buffer after alloc = %lu\n", pre_buff[i]);
+	// !!!!!!!!!!!!!!! CHECKER
 	i = 0;
 	while (av_copy[i] != NULL)
 		i++;
+	// printf("Alloc size = %i\n", i);
 	fill_stack_a(pre_buff, a, i);
 	if (ac == 2)
 		free_split(av_copy);
 	free(pre_buff);
-	if (a_is_sorted(a) || a_double(a))
+	if (a_contains_double(a))
 	{
+		printf("A contain double\n");
+		ft_printf("Error\n");
 		free_stack(*a);
 		exit (-1);
 	}
+	if (a_is_sorted(a))
+	{
+		printf("A is sorted\n");
+		free_stack(*a);
+		exit (-1);
+	}
+	// print_full(*a, "print check");
 }
