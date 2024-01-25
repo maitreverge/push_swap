@@ -6,17 +6,17 @@
 #    By: flverge <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/25 11:56:36 by flverge           #+#    #+#              #
-#    Updated: 2024/01/25 10:15:47 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/25 10:30:45 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
 NAME = push_swap
 
-# Compiler options
+# Compiler
 CC = cc
 
-# Valgrind flag
+# Compiler options
 CFLAGS = -Wall -Wextra -Werror
 
 # Asan flag
@@ -44,7 +44,6 @@ YELLOW = \033[33m
 ORANGE = \033[93m
 BLUE = \033[94m
 
-
 all: $(LIBFT) $(NAME)
 
 %.o: %.c
@@ -58,21 +57,29 @@ $(LIBFT):
 
 # remettre flags
 $(NAME): $(OBJ)
-	@echo "$(BOLD)$(RED)🛠️      Compiling push_swap    🛠️$(RESET)"
+	@echo "$(BOLD)$(RED)🛠️            Compiling push_swap      🛠️$(RESET)"
 	@echo "\n"
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(INC) -o $(NAME)
-	@echo "$(BOLD)$(GREEN)✅✅      Push_swap fully compiled, ready to use       ✅✅$(RESET)"
+	@echo "🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
+	@echo "$(BOLD)$(GREEN)🥳      Push_swap fully compiled, ready to use      🥳$(RESET)"
+	@echo "🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
 	@echo "\n"
 
 clean:
 	@make clean -sC $(LIBFT_PATH)
 	@rm -f $(OBJ)
 	@echo "$(BOLD)$(ORANGE)🌀     Cleaned .o push_swap's files   🌀$(RESET)"
+	@echo "\n"
+	@echo "$(BOLD)$(BLUE)-----------------------$(RESET)"
+	@echo "\n"
 
 fclean: clean
 	@make fclean -sC $(LIBFT_PATH)
 	@rm -f $(NAME)
-	@echo "$(BOLD)$(ORANGE)🌀     Cleaned push_swap exec       🌀$(RESET)"
+	@echo "$(BOLD)$(ORANGE)🌀        Cleaned push_swap exec      🌀$(RESET)"
+	@echo "\n"
+	@echo "$(BOLD)$(BLUE)-----------------------$(RESET)"
+	@echo "\n"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: flverge <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 10:22:50 by flverge           #+#    #+#              #
-#    Updated: 2023/11/20 09:14:55 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/25 10:27:21 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,21 +25,22 @@ YELLOW = \033[33m
 all: $(NAME)
 
 projects:
-	@echo "$(BOLD)$(RED)🛠️      Compiling libft      🛠️$(RESET)"
+	@echo "$(BOLD)$(RED)🛠️            Compiling libft          🛠️$(RESET)"
+	@echo "\n"
 	@make -s -C libft/
 	@make -s -C ft_printf/
 	@make -s -C get_next_line/
 
 $(NAME): projects
 	@ar -rcs $(NAME) libft/src/*.o ft_printf/src/*.o get_next_line/src/*.o
-	@echo "$(BOLD)$(GREEN)😎      Libft Compiled      😎$(RESET)"
+	@echo "$(BOLD)$(GREEN)😎            Libft Compiled          😎$(RESET)"
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(BOLD)$(YELLOW)🧹     Cleaned .o libft files     🧹$(RESET)"
+	@echo "$(BOLD)$(YELLOW)🧹        Cleaned .o libft files      🧹$(RESET)"
 
 fclean: clean
 	@rm -f $(LIBS)
-	@echo "$(BOLD)$(YELLOW)🧹     Cleaned libmaster.a        🧹$(RESET)"
+	@echo "$(BOLD)$(YELLOW)🧹          Cleaned libmaster.a       🧹$(RESET)"
 
 re: fclean all
