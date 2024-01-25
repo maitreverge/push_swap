@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:08:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/25 09:36:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:16:36 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	sort_3(t_node **a)
 	min = find_min(a);
 	max = find_max(a);
 	middle = find_middle(a, min, max);
-	if (min == current->nb)
+	if (min == current->nb && max == current->next->nb)
 	{
 		sa(a, true);
 		ra(a, true);
