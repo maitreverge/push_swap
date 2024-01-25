@@ -6,7 +6,7 @@
 #    By: flverge <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/25 11:56:36 by flverge           #+#    #+#              #
-#    Updated: 2024/01/22 19:30:39 by flverge          ###   ########.fr        #
+#    Updated: 2024/01/25 10:15:47 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = push_swap
 CC = cc
 
 # Valgrind flag
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 # Asan flag
 # CFLAGS = -Wall -Wextra -Werror -fsanitize=address -static-libsan
@@ -27,7 +27,7 @@ LIBFT_NAME = libmaster.a
 LIBFT_PATH = libft/
 LIBFT = $(LIBFT_PATH)$(LIBFT_NAME)
 
-# pipex files
+# push_swap files
 SRC_DIR := src
 SRC := $(wildcard $(SRC_DIR)/*.c)
 OBJ := ${SRC:.c=.o}
@@ -47,9 +47,8 @@ BLUE = \033[94m
 
 all: $(LIBFT) $(NAME)
 
-# remettre les flags
 %.o: %.c
-	@$(CC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
 	@make -sC $(LIBFT_PATH)
@@ -75,6 +74,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "$(BOLD)$(ORANGE)🌀     Cleaned push_swap exec       🌀$(RESET)"
 
-bonus: all
-
 re: fclean all
+
+.PHONY: all clean fclean re
