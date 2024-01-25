@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:24:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 18:28:40 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/25 09:58:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ bool	no_num_left(t_node **a, int num, int low)
 	{
 		while (current)
 		{
-			if (current->master_index < num)
+			if (current->master_index < (size_t)num)
 				return (false);
 			current = current->next;
 		}
@@ -74,7 +74,7 @@ bool	no_num_left(t_node **a, int num, int low)
 	{
 		while (current)
 		{
-			if (current->master_index > num)
+			if (current->master_index > (size_t)num)
 				return (false);
 			current = current->next;
 		}
@@ -93,7 +93,7 @@ bool	calculate_low(t_node **b, int max)
 	i = 0;
 	while (i < size / 2)
 	{
-		if (current->master_index == max)
+		if (current->master_index == (size_t)max)
 			return (true);
 		i++;
 		current = current->next;

@@ -6,7 +6,7 @@
 /*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:08:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 18:14:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/01/25 09:36:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static bool	sub_selection(t_node **a, t_node **b, int *size, int *min)
 	if ((*a)->nb == *min)
 	{
 		pb(a, b, true);
-		*size--;
+		(*size)--;
 	}
 	return (false);
 }
