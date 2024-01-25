@@ -84,3 +84,9 @@ pa
 pa
 
 15 instructions
+
+6 4 8 3 2 5
+
+1 5 2 6 3
+
+
