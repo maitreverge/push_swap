@@ -24,16 +24,46 @@ git clone git@github.com:maitreverge/push_swap.git && cd push_swap
 > [!IMPORTANT]
 > The program only output the list of operations needed to sort the input stack a while ensuring compliance with the project rules.
 
-> [!WARNING]
-> Invalid input (e.g., non-integer values, duplicates, or no arguments) should result in an appropriate error message without causing undefined behavior.
+At the heart of the push_swap project lies a set of predefined operations that manipulate the stacks a and b. These operations are fundamental building blocks for sorting the numbers efficiently. Understanding these commands is crucial:
 
+- `ra` (rotate a): Moves the first element of stack `a` to the bottom.
+
+- `rra` (reverse rotate a): Moves the last element of stack `a` to the top.
+
+- `rb` (rotate b): Moves the first element of stack `b` to the bottom.
+
+- `rrb` (reverse rotate b): Moves the last element of stack `b` to the top.
+
+- `rr` (rotate both): Simultaneously applies `ra` and `rb`.
+
+- `rrr` (reverse rotate both): Simultaneously applies `rra` and `rrb`.
+
+- `sa` (swap a): Swaps the first two elements of stack `a`.
+
+- `sb` (swap b): Swaps the first two elements of stack `b`.
+
+- `ss` (swap both): Simultaneously applies `sa` and `sb`.
+
+- `pa` (push a): Moves the top element from stack `b` to stack `a`.
+
+- `pb` (push b): Moves the top element from stack `a` to stack `b`.
+
+The command :
 ```bash
+./push_swap 4 3 2 1 
+```
+actually outputs :
 
+```text
+rra
+pb
+ra
+sa
+pa
 ```
 
-## ⚙️ USAGE
-
-Unfinished project, soon.
+> [!WARNING]
+> Invalid input (e.g., non-integer values, duplicates, inputs outside of a regular `i32` limits) should result in an appropriate error message without causing undefined behavior.
 
 ## 🤝 CONTRIBUTION
-Contributions are open !
+Contributions are open, open a Github Issue or submit a PR 🚀
