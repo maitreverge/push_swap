@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 12:18:27 by flverge           #+#    #+#             */
-/*   Updated: 2024/01/24 16:05:12 by flverge          ###   ########.fr       */
+/*   Updated: 2025/01/13 20:43:51 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	rra(t_node **a, bool to_print)
 {
-	t_node	*old_head;
 	t_node	*old_tail;
 
-	old_head = *a;
 	old_tail = lstlast(*a);
 	if (lstsize(*a) < 2)
 		return ;
@@ -35,10 +33,8 @@ void	rra(t_node **a, bool to_print)
 
 void	rrb(t_node **b, bool to_print)
 {
-	t_node	*old_head;
 	t_node	*old_tail;
 
-	old_head = *b;
 	old_tail = lstlast(*b);
 	if (lstsize(*b) < 2)
 		return ;
