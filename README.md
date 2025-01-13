@@ -15,7 +15,21 @@ Successful completion of this project not only demonstrates mastery in algorithm
 
 ## 🛠️ PROGRAM SPECIFICITIES AND CONSIDERATIONS
 
-Unfinished project, soon.
+Clone the project:
+
+```bash
+git clone git@github.com:maitreverge/push_swap.git && cd push_swap
+```
+
+> [!IMPORTANT]
+> The program only output the list of operations needed to sort the input stack a while ensuring compliance with the project rules.
+
+> [!WARNING]
+> Invalid input (e.g., non-integer values, duplicates, or no arguments) should result in an appropriate error message without causing undefined behavior.
+
+```bash
+
+```
 
 ## ⚙️ USAGE
 
